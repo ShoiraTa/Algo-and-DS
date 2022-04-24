@@ -93,3 +93,56 @@ function findOutlier(integers) {
 
   return odd.length === 1 ? odd[0] : even[0];
 }
+
+// Break camelCase
+
+const solution1 = (str) => {
+  const fn = str.split('').reduce((final, letter) => {
+    letter.match(/[A-Z]/) ? final.push(` ${letter}`) : final.push(letter);
+    return final;
+  }, []);
+
+  return fn.join('');
+};
+
+// smart:
+const solution2 = (string) => {
+  return string.replace(/(?=[A-Z])/g, ' ');
+};
+
+//Convert number to reversed array of digits
+function digitize(n) {
+  return n.toString().split('').reverse().map(Number);
+}
+
+// isNarcissistic
+function isNarcissistic1(n) {
+  let nToArr = n.toString().split('').map(Number);
+  const fn = nToArr.reduce((total, num) => {
+    return (total += Math.pow(num, nToArr.length));
+  }, 0);
+  console.log(fn);
+  return fn === n ? true : false;
+}
+
+// smart
+function isNarcissistic(n) {
+  return (
+    n ===
+    n
+      .toString()
+      .split('')
+      .reduce((res, num, index, arr) => (res += Math.pow(num, arr.length)), 0)
+  );
+}
+
+//  multiplies of 3 and 5
+function solution(number) {
+  let total = 0;
+  for (let i = 0; i < number; i++) {
+    if (i % 3 === 0 || i % 5 === 0 || (i % 3 === 0 && i % 5 === 0)) {
+      total += i;
+    }
+  }
+  return total;
+}
