@@ -146,3 +146,46 @@ function solution(number) {
   }
   return total;
 }
+
+// Sum of all arguments
+function sum() {
+  return Array.prototype.reduce.call(
+    arguments,
+    function (a, b) {
+      return a + b;
+    },
+    0
+  );
+}
+
+// betterThanAverage 8
+function betterThanAverage(classPoints, yourPoints) {
+  const avg = classPoints.reduce((total, score) => (total += score));
+  console.log(avg / classPoints.length);
+  return avg / classPoints.length > yourPoints ? false : true;
+}
+
+// smart
+function betterThanAverage1(classPoints, yourPoints) {
+  return yourPoints > classPoints.reduce((a, b) => a + b, 0) / classPoints.length;
+}
+
+// Sort Numbers 7
+function solution(nums) {
+  if (nums === null) return [];
+  return nums.join('') == 0 ? [] : nums.sort((a, b) => a - b);
+}
+
+// String cleaning
+function stringClean(s) {
+  return s
+    .split('')
+    .filter((el) => /[^0-9]/.test(el))
+    .join('');
+}
+
+// smart
+
+function stringClean1(s) {
+  return s.replace(/\d/g, '');
+}
