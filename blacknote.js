@@ -1,21 +1,14 @@
-let users = {
-  Alan: {
-    age: 27,
-    online: true,
-  },
-  Jeff: {
-    age: 32,
-    online: true,
-  },
-  Sarah: {
-    age: 48,
-    online: true,
-  },
-  Ryan: {
-    age: 19,
-    online: true,
-  },
-};
+function charCount(str) {
+  let count = {};
+  str
+    .toLowerCase()
+    .split('')
+    .map((element) => {
+      if (/[a-z]/.test(element) == true) {
+        count[element] = ++count[element] || 1;
+      }
+    });
+  return count;
+}
 
-console.log(users.hasOwnProperty('Alan'));
-console.log('Alan' in users);
+console.log(charCount('helloo o!sdfsdasda'));

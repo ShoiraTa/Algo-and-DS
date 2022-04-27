@@ -189,3 +189,19 @@ function stringClean(s) {
 function stringClean1(s) {
   return s.replace(/\d/g, '');
 }
+
+// PRint count of chars on string
+
+function charCount(str) {
+  let count = {};
+  // for (var char of str){}
+  str
+    .toLowerCase()
+    .split('')
+    .map((element) => {
+      if (/[a-z]/.test(element) == true) {
+        count[element] = ++count[element] || 1;
+      }
+    });
+  return count;
+}
