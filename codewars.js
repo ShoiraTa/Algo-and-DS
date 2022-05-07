@@ -234,3 +234,46 @@ function multiplyAll2(arr) {
 function findShort(s) {
   return s.split(' ').sort((a, b) => a.length - b.length)[0].length;
 }
+
+// Objects ////////////
+const whosOnline = (friends) => {
+  return friends.reduce((obj, { username, status, lastActivity }) => {
+    const stat = status === 'online' && lastActivity > 10 ? 'away' : status;
+    return { ...obj, [stat]: obj[stat] ? [...obj[stat], username] : [username] };
+  }, {});
+};
+
+// maxPossibleScore
+function maxPossibleScore(obj, arr) {
+  let total = 0;
+  for (var key in obj) {
+    var val = obj[key];
+    total += arr.toString().includes(key) ? val * 2 : val;
+  }
+  return total;
+}
+//  reduce object
+function maxPossibleScore1(obj, arr) {
+  return Object.keys(obj).reduce((acc, key) => {
+    const val = obj[key];
+    acc += arr.toString().includes(key) ? val * 2 : val;
+    return acc;
+  }, 0);
+}
+
+//
+function arithmetic(a, b, operator) {
+  const operations = { add: '+', subtract: '-', multiply: '*', divide: '/' };
+  return eval(a + operations[operator] + b);
+}
+
+const arithmetic2 = (a, b, operator) => {
+  const functions = {
+    add: (a, b) => a + b,
+    subtract: (a, b) => a - b,
+    multiply: (a, b) => a * b,
+    divide: (a, b) => a / b,
+  };
+
+  return functions[operator](a, b);
+};
