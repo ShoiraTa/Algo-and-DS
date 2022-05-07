@@ -277,3 +277,23 @@ const arithmetic2 = (a, b, operator) => {
 
   return functions[operator](a, b);
 };
+
+//
+function killer(suspectInfo, dead) {
+  const count = Object.keys(suspectInfo).reduce((obj, name) => {
+    const val = suspectInfo[name];
+    obj = { ...obj, [name]: 0 };
+    dead.forEach((d) => {
+      obj = val.includes(d) ? { ...obj, [name]: obj[name] + 1 } : { ...obj };
+    });
+    return obj;
+  }, {});
+  return Object.keys(count).sort((a, b) => count[b] - count[a])[0];
+}
+
+//
+function numObj(s) {
+  return s.reduce((obj, num) => {
+    return [...obj, { [num]: String.fromCharCode(num) }];
+  }, []);
+}

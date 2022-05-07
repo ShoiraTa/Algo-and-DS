@@ -1,5 +1,6 @@
-function arithmetic(a, b, operator) {
-  const operations = { add: '+', subtract: '-', multiply: '*', divide: '/' };
-  return eval(a + operations[operator] + b);
+function numObj(s) {
+  return s.reduce((obj, num) => {
+    return [...obj, { [num]: String.fromCharCode(num) }];
+  }, []);
 }
-console.log(arithmetic(1, 2, 'add'));
+console.log(numObj([118, 117, 120]));
