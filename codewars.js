@@ -194,7 +194,8 @@ function stringClean1(s) {
 
 function charCount(str) {
   let count = {};
-  // for (var char of str){}
+  // for (let char of arr){}
+  // for (let char in obj){}
   str
     .toLowerCase()
     .split('')
@@ -204,4 +205,32 @@ function charCount(str) {
       }
     });
   return count;
+}
+
+// Remove dublicates
+function sumUniq(a) {
+  return Array.from(new Set(a));
+}
+
+// Sum of unque vals
+function sumUniq2(a) {
+  return a.reduce((acc, val) => {
+    return val > 0 ? (acc += val) : acc;
+  }, 0);
+}
+
+//
+const multiplyAll = (array) => (int) => array.map((number) => number * int);
+// OR
+
+function multiplyAll2(arr) {
+  return function (n) {
+    return arr.map((x) => x * n);
+  };
+}
+
+// return length of shortest word in string
+
+function findShort(s) {
+  return s.split(' ').sort((a, b) => a.length - b.length)[0].length;
 }
