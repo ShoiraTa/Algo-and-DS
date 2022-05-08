@@ -278,7 +278,7 @@ const arithmetic2 = (a, b, operator) => {
   return functions[operator](a, b);
 };
 
-//
+// 7
 function killer(suspectInfo, dead) {
   const count = Object.keys(suspectInfo).reduce((obj, name) => {
     const val = suspectInfo[name];
@@ -291,9 +291,62 @@ function killer(suspectInfo, dead) {
   return Object.keys(count).sort((a, b) => count[b] - count[a])[0];
 }
 
-//
+// 7
 function numObj(s) {
   return s.reduce((obj, num) => {
     return [...obj, { [num]: String.fromCharCode(num) }];
   }, []);
 }
+
+// 6
+function count(string) {
+  return string.split('').reduce((obj, letter) => {
+    obj[letter] = (obj[letter] || 0) + 1;
+    return obj;
+  }, {});
+}
+
+// 6 get full name set full name
+class NamedOne {
+  constructor(first, last) {
+    (this.firstName = first), (this.lastName = last);
+  }
+  get fullName() {
+    return this.firstName + ' ' + this.lastName;
+  }
+  set fullName(name) {
+    if (/ /.test(name)) [this.firstName, this.lastName] = name.split(' ');
+  }
+}
+
+// Getting setting with funtion
+
+function NamedOne1(first, last) {
+  this.firstName = first;
+  this.lastName = last;
+
+  Object.defineProperty(this, 'fullName', {
+    set: function (value) {
+      var parts = value.split(' ');
+      if (parts.length === 2) {
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+      }
+    },
+    get: function () {
+      return this.firstName + ' ' + this.lastName;
+    },
+  });
+}
+
+// 6
+var runLengthEncoding = function (str) {
+  let count = 1;
+  return str.split('').reduce((arr, letter, i, array) => {
+    if (letter !== array[i + 1]) {
+      arr.push([letter, count]);
+      count = 1;
+    } else count += 1;
+    return arr;
+  }, []);
+};

@@ -1,6 +1,11 @@
-function numObj(s) {
-  return s.reduce((obj, num) => {
-    return [...obj, { [num]: String.fromCharCode(num) }];
+var runLengthEncoding = function (str) {
+  let count = 1;
+  return str.split('').reduce((arr, letter, i, array) => {
+    if (letter !== array[i + 1]) {
+      arr.push([letter, count]);
+      count = 1;
+    } else count += 1;
+    return arr;
   }, []);
-}
-console.log(numObj([118, 117, 120]));
+};
+console.log(runLengthEncoding('aab'));
