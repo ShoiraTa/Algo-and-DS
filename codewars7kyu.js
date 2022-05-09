@@ -350,3 +350,7 @@ var runLengthEncoding = function (str) {
     return arr;
   }, []);
 };
+
+// 7 [...Array(++5 - 10)]
+const dontGiveMeFive = (start, end) =>
+  [...Array(++end - start)].reduce((pre, _, idx) => pre + !/5/.test(idx + start), 0);
