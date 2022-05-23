@@ -354,3 +354,10 @@ var runLengthEncoding = function (str) {
 // 7 [...Array(++5 - 10)]
 const dontGiveMeFive = (start, end) =>
   [...Array(++end - start)].reduce((pre, _, idx) => pre + !/5/.test(idx + start), 0);
+
+// toFreud
+function toFreud(string) {
+  if (string === '') return '';
+  let length = string.split(' ').length;
+  return 'sex '.repeat(length).replace(/\s+\S*$/, '');
+}
