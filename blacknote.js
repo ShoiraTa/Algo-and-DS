@@ -1,18 +1,7 @@
-// function max(array) {
-//   if (array.length <= 0) return -Infinity;
-//   const maxI = 0;
-//   const helper = (newArr) => {
-//     if (newArr.length <= 1) return 1;
-//     if (maxI < newArr[0]) maxI = newArr[0];
-//     helper(newArr.slice(1));
-//   };
-//   helper(array);
-//   return maxI;
-// }
-// console.log(max([1, 3]));
-
-var isPalindrome = function (x) {
-  console.log(String(x).split('').reverse().join(''));
-  return String(x).split('').reverse().join('') == x ? true : false;
+var plusOne = function (digits) {
+  let lastD = +digits.slice(-1) + 1;
+  lastD != 10 ? digits.splice(-1, 1, lastD) : digits.splice(-1, 1, 1, 0);
+  return digits;
 };
-console.log(isPalindrome(1213));
+
+console.log(plusOne([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]));
