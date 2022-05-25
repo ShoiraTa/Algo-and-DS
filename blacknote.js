@@ -1,7 +1,15 @@
-var plusOne = function (digits) {
-  let lastD = +digits.slice(-1) + 1;
-  lastD != 10 ? digits.splice(-1, 1, lastD) : digits.splice(-1, 1, 1, 0);
-  return digits;
+var romanToInt = function (s) {
+  const obj = { 1: 'I', 5: 'V', 10: 'X', 50: 'L', 100: 'C', 500: 'D', 1000: 'M' };
+  let sArr = s.split('');
+  let total = '';
+
+  sArr.map((_, i) => {
+    let current = obj[sArr[i]];
+    let next = obj[sArr[i + 1]];
+    current < next ? (total -= current) : (total += current);
+  });
+
+  return total;
 };
 
-console.log(plusOne([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]));
+console.log(romanToInt('33'));
