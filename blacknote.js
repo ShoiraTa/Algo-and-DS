@@ -1,15 +1,13 @@
-var romanToInt = function (s) {
-  const obj = { 1: 'I', 5: 'V', 10: 'X', 50: 'L', 100: 'C', 500: 'D', 1000: 'M' };
-  let sArr = s.split('');
-  let total = '';
-
-  sArr.map((_, i) => {
-    let current = obj[sArr[i]];
-    let next = obj[sArr[i + 1]];
-    current < next ? (total -= current) : (total += current);
-  });
-
+function minSum(arr) {
+  const sorted = arr.sort((a, b) => a - b);
+  let total = 0;
+  let length = arr.length / 2;
+  for (let i = 1; i <= length; i++) {
+    total += sorted[0] * sorted[sorted.length - 1];
+    sorted.shift();
+    sorted.pop();
+  }
   return total;
-};
+}
 
-console.log(romanToInt('33'));
+console.log(minSum([9, 2, 8, 7, 5, 4, 0, 6]));

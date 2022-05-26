@@ -361,3 +361,17 @@ function toFreud(string) {
   let length = string.split(' ').length;
   return 'sex '.repeat(length).replace(/\s+\S*$/, '');
 }
+
+// minSum
+
+function minSum(arr) {
+  const sorted = arr.sort((a, b) => a - b);
+  let total = 0;
+  let length = arr.length / 2;
+  for (let i = 1; i <= length; i++) {
+    total += sorted[0] * sorted[sorted.length - 1];
+    sorted.shift();
+    sorted.pop();
+  }
+  return total;
+}

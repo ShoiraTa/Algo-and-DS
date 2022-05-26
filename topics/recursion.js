@@ -32,5 +32,3 @@ const recursionWithHelper = (arr) => {
   helper(arr);
   return final;
 };
-
-console.log(recursionWithHelper([1, 2, 3, 4]));
