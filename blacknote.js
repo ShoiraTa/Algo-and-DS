@@ -1,13 +1,13 @@
-function minSum(arr) {
-  const sorted = arr.sort((a, b) => a - b);
-  let total = 0;
-  let length = arr.length / 2;
-  for (let i = 1; i <= length; i++) {
-    total += sorted[0] * sorted[sorted.length - 1];
-    sorted.shift();
-    sorted.pop();
-  }
-  return total;
-}
+var longestCommonPrefix = function (strs) {
+  let min = strs.sort((a, b) => a.length - b.length)[0];
+  min.split('').forEach((l, i) => {
+    for (let y = 0; y < strs.length; y++) {
+      if (l !== strs[y][i]) {
+        min = min.slice(0, i);
+      }
+    }
+  });
+  return min;
+};
 
-console.log(minSum([9, 2, 8, 7, 5, 4, 0, 6]));
+console.log(longestCommonPrefix(['flower', 'flow', 'flight']));
