@@ -1,13 +1,26 @@
-var longestCommonPrefix = function (strs) {
-  let min = strs.sort((a, b) => a.length - b.length)[0];
-  min.split('').forEach((l, i) => {
-    for (let y = 0; y < strs.length; y++) {
-      if (l !== strs[y][i]) {
-        min = min.slice(0, i);
+function isCoprime(x, y) {
+  let xDivisors = [];
+  let yDivisors = [];
+  let commonD = [];
+
+  const fn = (num, divisor) => {
+    for (let i = 1; i <= num; i++) {
+      if (num % i === 0) {
+        divisor.push(i);
       }
     }
-  });
-  return min;
-};
+  };
 
-console.log(longestCommonPrefix(['flower', 'flow', 'flight']));
+  fn(x, xDivisors);
+  fn(y, yDivisors);
+
+  xDivisors.forEach((num, i) => {
+    if (yDivisors.includes(num)) {
+      commonD.push(num);
+    }
+  });
+
+  return commonD.length === 1 ? true : false;
+}
+
+console.log(isCoprime(2, 28));
