@@ -1,24 +1,17 @@
 const simpleRecursion = (num) => {
   if (num <= 0) return;
-  console.log(num);
   num--;
   simpleRecursion(num);
 };
 
-// ------------------------------------------------------------
+// ----------------------------------------------------------//
 
 const levelTwoRecursion = (num) => {
   if (num <= 1) return 1;
-  // console.log(num);
   return num + levelTwoRecursion(num - 1);
 };
 
-const factorial = (num) => {
-  if (num <= 1) return 1;
-  return num * factorial(num - 1);
-};
-
-// ------------------------------------------------------------
+// ----------------------------------------------------------//
 
 const recursionWithHelper = (arr) => {
   let final = [];
@@ -32,3 +25,35 @@ const recursionWithHelper = (arr) => {
   helper(arr);
   return final;
 };
+
+// ----------------------------------------------------------//
+
+var reverseStr = function (s) {
+  return s === '' ? '' : reverseStr(s.substr(1)) + s.charAt(0);
+};
+
+// ------------------------------------------------------------//
+
+var reverseArray = function (s) {
+  if (s.length <= 0) return '';
+  let res = [s[s.length - 1] + reverseArray(s.slice(0, -1))];
+  return res;
+};
+
+// ------------------------------------------------------------//
+var reverseString = function (s) {
+  let first = 0;
+  let last = s.length - 1;
+
+  while (first <= last) {
+    let temp = s[first];
+    s[first] = s[last];
+    s[last] = temp;
+    first++;
+    last--;
+  }
+
+  return s;
+};
+
+console.log(reverseString(['h', 'e', 'l', 'l', 'o']));

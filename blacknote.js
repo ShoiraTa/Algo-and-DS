@@ -1,26 +1,12 @@
-function isCoprime(x, y) {
-  let xDivisors = [];
-  let yDivisors = [];
-  let commonD = [];
-
-  const fn = (num, divisor) => {
-    for (let i = 1; i <= num; i++) {
-      if (num % i === 0) {
-        divisor.push(i);
-      }
-    }
-  };
-
-  fn(x, xDivisors);
-  fn(y, yDivisors);
-
-  xDivisors.forEach((num, i) => {
-    if (yDivisors.includes(num)) {
-      commonD.push(num);
-    }
-  });
-
-  return commonD.length === 1 ? true : false;
+function well(x) {
+  let count = 0;
+  for (let i = 0; i < x.length; i++) {
+    console.log(x[i]);
+    x[i].forEach((el) => {
+      if (/good/i.test(el)) count++;
+    });
+  }
+  return count === 0 ? 'Fail!' : count > 2 ? 'I smell a series!' : 'Publish!';
 }
 
-console.log(isCoprime(2, 28));
+console.log(well([['gOOd', 'bAd', 'BAD', 'bad', 'GOOD'], ['bad'], ['gOOd', 'BAD']]));
