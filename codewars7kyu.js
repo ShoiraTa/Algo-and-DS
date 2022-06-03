@@ -418,3 +418,20 @@ function well(x) {
   }
   return count === 0 ? 'Fail!' : count > 2 ? 'I smell a series!' : 'Publish!';
 }
+
+//
+
+function nines(n) {
+  let num = 0;
+
+  let helper = (number) => {
+    if (number <= 0) return 1;
+    else {
+      /9/.test(number) ? num++ : null;
+    }
+    helper(number - 1n);
+  };
+
+  helper(n);
+  return BigInt(num);
+}

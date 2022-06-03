@@ -55,5 +55,3 @@ var reverseString = function (s) {
 
   return s;
 };
-
-console.log(reverseString(['h', 'e', 'l', 'l', 'o']));

@@ -1,12 +1,82 @@
-function well(x) {
-  let count = 0;
-  for (let i = 0; i < x.length; i++) {
-    console.log(x[i]);
-    x[i].forEach((el) => {
-      if (/good/i.test(el)) count++;
-    });
+function numberOfPairs(gloves) {
+  let obj = {},
+    res = 0;
+
+  gloves.forEach((glove) => {
+    obj = {
+      ...obj,
+      [glove]: obj[glove] ? (obj[glove] += 1) : 1,
+    };
+  });
+
+  for (let value in obj) {
+    res += obj[value] % 2 === 0 ? obj[value] / 2 : (obj[value] - 1) / 2;
   }
-  return count === 0 ? 'Fail!' : count > 2 ? 'I smell a series!' : 'Publish!';
+
+  console.log([...new Set(gloves)]);
+  return res;
 }
 
-console.log(well([['gOOd', 'bAd', 'BAD', 'bad', 'GOOD'], ['bad'], ['gOOd', 'BAD']]));
+console.log(
+  numberOfPairs([
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+    'black',
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+    'black',
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+    'black',
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+    'black',
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+    'black',
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+    'black',
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+    'black',
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+    'black',
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+    'black',
+    'gray',
+    'black',
+    'purple',
+    'purple',
+    'gray',
+  ])
+);
