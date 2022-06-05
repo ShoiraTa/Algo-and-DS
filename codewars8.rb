@@ -48,3 +48,13 @@ end
 def ghostbusters(building)
   building =~ /\s+/   ? building.gsub(/\s+/, '') : 'You just wanted my autograph didn\'t you?'
 end
+
+# reverse_seq
+def reverse_seq(n)
+  return Array(1..n).reverse
+end
+
+# name_shuffler
+def name_shuffler(str)
+  return str.split(' ').reverse().join(' ')
+end

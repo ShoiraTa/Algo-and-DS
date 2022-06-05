@@ -1,82 +1,10 @@
-function numberOfPairs(gloves) {
-  let obj = {},
-    res = 0;
-
-  gloves.forEach((glove) => {
-    obj = {
-      ...obj,
-      [glove]: obj[glove] ? (obj[glove] += 1) : 1,
-    };
+function arrayDiff(a, b) {
+  b.map((num) => {
+    a = a.filter((n) => n != num);
   });
-
-  for (let value in obj) {
-    res += obj[value] % 2 === 0 ? obj[value] / 2 : (obj[value] - 1) / 2;
-  }
-
-  console.log([...new Set(gloves)]);
-  return res;
+  return a;
 }
 
 console.log(
-  numberOfPairs([
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-    'black',
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-    'black',
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-    'black',
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-    'black',
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-    'black',
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-    'black',
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-    'black',
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-    'black',
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-    'black',
-    'gray',
-    'black',
-    'purple',
-    'purple',
-    'gray',
-  ])
+  arrayDiff([13, -18, -16, -13, -10, 20, 15, -3, -8, -18, 0, -1, 20, 17, -17, 20], [13, -18, -16, -13, -10, 20, 15, -3])
 );

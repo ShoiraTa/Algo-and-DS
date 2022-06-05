@@ -1,4 +1,4 @@
-def reverse_seq(n)
-  return Array(1..n).reverse
+def name_shuffler(str)
+  return str.split(' ').reverse().join(' ')
 end
-  p reverse_seq(10)
+  p name_shuffler('john McClane')
