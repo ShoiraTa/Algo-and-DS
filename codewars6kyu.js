@@ -28,3 +28,34 @@ function goodVsEvil(good, evil) {
     ? 'Battle Result: Good triumphs over Evil'
     : 'Battle Result: Evil eradicates all trace of Good';
 }
+
+// OOP
+
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+
+Object.defineProperty(Person.prototype, 'name', {
+  get: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+
+  set: function (name) {
+    let splited = name.split(' ');
+    this.firstName = splited[0];
+    this.lastName = splited[1];
+    return this.firstName + this.lastName;
+  },
+});
+
+let newPerson = new Person('Augustus', 'Cole');
+newPerson.name = 'Coleee Train';
+
+// random
+function generateName() {
+  let string = Math.random().toString(36);
+  return string;
+}

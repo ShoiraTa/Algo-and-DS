@@ -1,4 +1,10 @@
-def name_shuffler(str)
-  return str.split(' ').reverse().join(' ')
+def number(bus_stops)
+  bus_stops.inject(0) do |total, (enter, exit), i|
+    total+=(enter-exit)
+  end
 end
-  p name_shuffler('john McClane')
+
+puts number([[10, 0], [3, 5], [5, 8]])
+
+
+ 
