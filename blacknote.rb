@@ -1,10 +1,21 @@
-def number(bus_stops)
-  bus_stops.inject(0) do |total, (enter, exit), i|
-    total+=(enter-exit)
+class Animal
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+  
+end
+
+class Cat < Animal
+  def sayName
+    puts "hello my name is #{name}"
   end
 end
 
-puts number([[10, 0], [3, 5], [5, 8]])
+mycat = Cat.new('murka')
 
+puts mycat.name
+mycat.sayName
 
  
