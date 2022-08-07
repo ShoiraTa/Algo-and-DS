@@ -1,0 +1,1 @@
+puts 5.between?(1,6)

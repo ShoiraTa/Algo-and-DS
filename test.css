@@ -1,6 +1,0 @@
-section { display: grid; grid-template-columns: 100px 1fr 1fr 250px; grid-template-rows: 50px 1fr 1fr; } 
-section header { grid-column: 1 / 4; grid-row: 1; } 
-section nav { grid-column: 1; grid-row: 2 / 3; } 
-section article { grid-column: 2; grid-row: 2; } 
-section aside { grid-column: 3; grid-row: 2; } 
-section footer { grid-column: 1 / 4; grid-row: 3; }
