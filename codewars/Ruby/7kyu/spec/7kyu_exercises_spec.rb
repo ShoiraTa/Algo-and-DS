@@ -10,4 +10,12 @@ RSpec.describe "7 kyu codewars" do
       expect(consecutive([4,5,6])).to eq(0) 
     end
   end
+  describe 'Smallest value of an array' do
+    it 'if value' do
+      expect(find_smallest([5,4,3,2,1], "value")).to eq(1) 
+    end
+    it 'if  index' do
+      expect(find_smallest([5,4,3,2,1],"index")).to eq(4)
+    end
+  end
 end
