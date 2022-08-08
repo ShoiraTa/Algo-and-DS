@@ -19,3 +19,13 @@ Assume the first parameter will always be an array filled with at least 1 number
 def find_smallest(numbers,to_return)
   to_return == 'value' ? numbers.min : numbers.index(numbers.min)
 end
+
+=begin
+Your car is old, it breaks easily. The shock absorbers are gone and you think it can handle about 15 more bumps before it dies totally.
+
+Unfortunately for you, your drive is very bumpy! Given a string showing either flat road (_) or bumps (n). If you are able to reach home safely by encountering 15 bumps or less, return Woohoo!, otherwise return Car Dea
+=end
+# Bumps in the Road
+def bump(x)
+  x.count('n') > 15 ?  "Car Dead" : "Woohoo!"
+end 
