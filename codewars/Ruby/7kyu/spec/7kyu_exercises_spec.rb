@@ -26,4 +26,13 @@ RSpec.describe "7 kyu codewars" do
       expect(bump("_nnnnnnn_n__n______nn__nn_nnn")).to eq("Car Dead")
     end
   end
+
+  describe 'Hells Kitchen' do
+    it 'if reaches ' do
+      expect(gordon('are you stu pid')).to eq('@R*!!!! Y**!!!! ST*!!!! P*D!!!!') 
+    end
+    it 'if dead' do
+      expect(gordon('how dare you feck')).to eq('H*W!!!! D@R*!!!! Y**!!!! F*CK!!!!')
+    end
+  end
 end
