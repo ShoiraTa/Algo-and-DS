@@ -45,3 +45,66 @@ Obviously the words should be Caps, Every word should end with '!!!!', Any lette
 def gordon(a)
   a.upcase.gsub(/\s+/, '!!!! ').gsub(/A/,'@').gsub(/[AEIOU]/, '*') + '!!!!'
 end
+
+=begin
+Move every letter in the provided string forward 10 letters through the alphabet.
+
+If it goes past 'z', start again at 'a'.
+
+Input will be a string with length > 0.
+=end
+# Move 10
+def move_ten (st)
+  alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  st.chars.reduce('') do |final, char|
+    index = alphabet.index(char)
+    index+10 <= alphabet.length-1 ? final.concat(alphabet[index+10]): final.concat(alphabet[((alphabet.length) - (index+10)).abs])   
+  end
+end
+
+=begin
+Simple, given a string of words, return the length of the shortest word(s).
+
+String will never be empty and you do not need to account for different data types.
+=end
+# Shortest Word
+
+def find_short(s)
+  s.split(' ').sort_by(&:length)[0].length
+end
+
+=begin
+Given an array of numbers (in string format), you must return a string. The numbers correspond to the letters of the alphabet in reverse order: a=26, z=1 etc. You should also account for '!', '?' and ' ' that are represented by '27', '28' and '29' respectively.
+
+All inputs will be valid.
+=end
+# Numbers to Letters
+def switcher(arr)
+  a = " ?!abcdefghijklmnopqrstuvwxyz"
+  arr.map{|val| a.reverse[(val.to_i) -1] }.join('')
+end
+
+=begin
+Given a string made up of letters a, b, and/or c, switch the position of letters a and b (change a to b and vice versa). Leave any incidence of c untouched.
+
+Example:
+
+'acb' --> 'bca'
+'aabacbaa' --> 'bbabcabb'
+=end
+# Switcheroo
+def switcheroo(x) 
+  x.gsub(/[ab]/, 'a' => 'b', 'b'=> 'a')
+  # x.tr('ab', 'ba')
+end
+=begin
+Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+=end
+
+# Two to One
+def longest(a1, a2)
+  a1.concat(a2).chars.uniq.sort.join
+end
+
+=begin
+=end
