@@ -147,5 +147,37 @@ def dont_give_me_five(s,e)
   (s..e).to_a.delete_if{|n| n.to_s.match(/5/)}.count
 end
 
+# 12 Aug 2022
 =begin
 =end
+# Highest and Lowest
+def high_and_low(numbers)
+  numbers.split(' ').map(&:to_i).minmax.reverse.join(' ')
+end
+
+
+=begin
+=end
+# Descending Order
+def descending_order(n)
+  return n unless  n.to_s.length > 1
+  n.to_s.chars.sort.reverse.join.to_i
+end
+
+
+=begin
+You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+=end
+# Get the Middle Character
+def get_middle(s)
+  middle = (s.length/2).floor 
+  s.length.odd? ? s[middle] : s[middle-1..middle]
+end
+
+
+=begin
+=end
+# List Filtering
+def filter_list(l)
+  l.reject{|char| char.is_a? String}
+end

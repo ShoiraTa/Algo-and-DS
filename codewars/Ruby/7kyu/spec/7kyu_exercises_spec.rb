@@ -62,6 +62,23 @@ RSpec.describe "7 kyu codewars" do
       expect(sum_two_smallest_numbers([25, 42, 71, 12, 18, 22])).to eq 30
     end
   end
+  describe "Solution" do
+    it "Fixed tests" do
+      expect(descending_order(0)).to eq 0
+      expect(descending_order(1) ).to eq 1
+      expect(descending_order(123456789) ).to eq 987654321
+    end
+  end
+
+  describe("Basic tests") do
+    it "Fixed tests" do
+    expect(get_middle("testing")).to eq "t"
+    expect(get_middle("A")).to eq  "A"
+    expect(get_middle("test")).to eq "es"
+    expect(get_middle("middle")).to eq  "dd"
+    expect(get_middle("of")).to eq "of"
+    end
+  end
 end
 
 RSpec.describe "7 kyu codewars" do
