@@ -174,10 +174,73 @@ def get_middle(s)
   s.length.odd? ? s[middle] : s[middle-1..middle]
 end
 
-
-=begin
-=end
 # List Filtering
 def filter_list(l)
   l.reject{|char| char.is_a? String}
 end
+
+# 13 Aug 2022 //////////////////////////////
+=begin
+square every digit of a number and concatenate them.
+=end
+# Square Every Digit
+def square_digits num
+  num.digits.map{|n| n ** 2}.reverse.join.to_i
+end
+
+=begin
+An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram.
+=end
+# Isograms
+def is_isogram(string)
+  !string.downcase.split("").uniq!
+end
+
+=begin
+Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+=end  
+# Exes and Ohs
+def XO(str)
+ str.count('xX') == str.count('oO')
+end
+
+
+=begin
+   you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+=end
+# Jaden Casing Strings
+class String
+  def toJadenCase
+    self.split.map(&:capitalize).join(' ')
+  end
+end
+
+# Beginner Series #3 Sum of Numbers
+def get_sum(a,b)
+  c, d = [a, b].minmax
+  (a..b).digits.reduce(:+)
+end
+
+
+=begin
+If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not..
+=end
+# Friend or Foe?
+def friend(friends)
+  friends.reject {|friend| friend.length >4 }
+end
+
+
+=begin
+  In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?
+=end
+# Growth of a Population
+def nb_year(p0, percent, aug, p)
+  pop = p0
+  year = 0
+  while pop < p do
+    year+=1
+    pop = pop + (pop * (percent.to_f.round(2)/100)) + aug
+  end
+  year
+end 
