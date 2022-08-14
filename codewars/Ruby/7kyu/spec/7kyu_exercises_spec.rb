@@ -108,7 +108,48 @@ RSpec.describe "7 kyu codewars" do
         expect(nb_year(1500000, 2.5, 10000, 2000000)).to eq 10
         expect(nb_year(1500000, 0.25, 1000, 2000000)).to eq 94
     end 
-end
+  end
+  describe("nb_year") do
+    it("Basic tests") do
+        expect(collatz(20)).to eq 8
+        expect(collatz(15)).to eq 18
+    end 
+  end
+  describe("find missing num") do
+    it("Basic tests") do
+        expect(findNum([3, 7, 1, 2, 8, 4, 5])).to eq 6
+        expect(findNum([4,2,3,1,6,7,9])).to eq 5
+    end 
+  end
+  describe "Solution" do
+    it "Fixed tests" do
+      expect(odd_or_even([0])).to eq "even"
+      expect(odd_or_even([1])).to eq "odd"
+      expect(odd_or_even([])).to eq "even"
+      expect(odd_or_even([-1023, 1, -2])).to eq "even"
+      expect(odd_or_even([-1023, -1, 3])).to eq "odd"
+    end
+  end
+
+  describe "Basic Tests" do
+    it "Fixed tests" do
+      expect(product_array([12,20])).to eq ([20,12])
+      expect(product_array([12,20])).to eq [20,12]
+      expect(product_array([3,27,4,2])).to eq [216,24,162,324]
+      expect(product_array([13,10,5,2,9])).to eq [900,1170,2340,5850,1300]
+      expect(product_array([16,17,4,3,5,2])).to eq [2040,1920,8160,10880,6528,16320]
+    end
+  end
+
+  describe "Basic tests" do
+    it "Fixed tests" do
+      expect(max_product([4,3,5], 2)).to eq 20
+      expect(max_product([10,8,7,9], 3)).to eq 720
+      expect(max_product([8,6,4,6], 3)).to eq 288
+      expect(max_product([14,29,-28,39,-16,-48], 4)).to eq -253344
+      expect(max_product([1], 1)).to eq 1
+    end
+  end 
       
 end
 

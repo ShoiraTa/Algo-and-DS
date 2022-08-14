@@ -244,3 +244,64 @@ def nb_year(p0, percent, aug, p)
   end
   year
 end 
+
+
+# 14aug
+
+=begin
+Find the missing number in the array
+You are given an array of positive numbers from 1 to n, such that all numbers from 1 to n are present except one number x. You have to find x. The input array is not sorted. Look at the below array and give it a try before checking the solution.
+
+[3, 7, 1, 2, 8, 4, 5] n = 8 missing number = 6
+=end
+
+def findNum arr
+  sorted = arr.sort
+  withNum = (sorted[0]..sorted[-1]).to_a
+  (withNum - sorted)[0]
+end
+
+=begin
+The Collatz Conjecture states that for any natural number n, if n is even, divide it by 2. If n is odd, multiply it by 3 and add 1. If you repeat the process continuously for n, n will eventually reach 1.
+[20, 10, 5, 16, 8, 4, 2, 1]
+=end
+
+# Collatz Conjecture Length
+def collatz n
+  count = 1
+  while n > 1
+    n = n.even? ? (n / 2) : ((n * 3) +1)
+    count+=1
+   end
+  count
+end 
+
+# Odd or Even?
+def odd_or_even(array)
+  array.reduce(0, :+).even?  ? 'even' : 'odd'
+end
+
+# Form The Minimum
+def min_value(digits)
+  digits.uniq.sort.join.to_i
+end
+
+
+# Product Array (Array Series #5)
+def product_array(numbers)
+  numbers.each_with_index.reduce([]) do  |final, (n, i)|
+    nums= numbers.reject.with_index{|n, ind| ind == i}
+    final <<  nums.reduce(:*)
+  end
+
+  # prod = numbers.reduce(:*)
+  # numbers.map { |x| prod / x }
+
+end
+
+
+# Product Of Maximums Of Array (Array Series #2)
+def max_product(numbers, size)
+  # numbers.sort.reverse.first(size).reduce(:*)
+  numbers.max(size).reduce(:*)
+end
