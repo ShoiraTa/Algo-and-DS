@@ -1,5 +1,5 @@
 =begin
-Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+Completethesolutionsothat it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
 =end
 # Split Strings
 def split(str)
@@ -51,7 +51,57 @@ end
 
 # Create Phone Number
 def create_phone_number(numbers)
-  format = "(xxx) xxx-xxxx";
+  format = '(xxx) xxx-xxxx';
   numbers.each.with_index(1) {|n, i| format.sub!('x', n.to_s )}
   format
+end
+
+
+# 16 Aug
+# Stop gninnipS My sdroW!
+
+def spin_words(string)
+  # string.split(' ').map {|word| word.length >=5 ? word.reverse : word  }.join(' ')
+  string.gsub(/\w{5,}/, &:reverse)
+end
+
+
+# Who likes it?
+def likes(names)
+  return 'no one likes this' if names.empty?
+  case names.size  
+    when 1 
+      "#{names[0]} likes this"
+    when 2
+      "#{names[0]} and #{names[1]} like this"
+    when 3
+      "#{names[0]}, #{names[1]} and #{names[2]} others like this"
+    else
+      "#{names[0]}, #{names[1]} and  #{names.size-2} others like this"
+  end
+end
+
+# Find The Parity Outlier 
+def find_outlier(integers)
+  odd, even = integers.partition{|n| n.odd? }
+  odd.length > 1 ? even[0] : odd[0]
+end
+
+
+# Counting Duplicates
+def duplicate_count(text)
+  return false if text.nil?
+  resHash = Hash.new(0)
+  text.downcase.split('').each { |c| resHash[c] += 1 }
+  resHash.count{|key, val| val > 1}
+
+  # ('a'..'z').count { |c| text.downcase.count(c) > 1 }
+end
+
+# Generating Numbers From Digits #1
+def proc_arr(arr)
+  p (1..arr.uniq.length).to_a.reverse.reduce(:*)
+  comb = (1...arr.length).reduce(:*)
+
+  comb
 end

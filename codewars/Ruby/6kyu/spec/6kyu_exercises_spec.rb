@@ -32,9 +32,15 @@ RSpec.describe "7 kyu codewars" do
       expect( count_bits(10)).to eq  2
     end
     it "should pass fixed tests" do
-      expect( create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])).to eq "(123) 456-7890"
-      expect( create_phone_number([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])).to eq "(111) 111-1111"
-      expect( create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])).to eq "(123) 456-7890"\
+      expect(duplicate_count("")).to eq  0      
+      expect(duplicate_count("abcde")).to eq  0
+      expect(duplicate_count("abcdeaa")).to eq 1
+      expect(duplicate_count("abcdeaB")).to eq 2   
+      expect(duplicate_count("Indivisibilities")).to eq 2
+    end
+    it "should pass fixed tests" do
+      expect(proc_arr(['1','2','2','3','2','3'])).to eq  [60, 122233, 332221]      
+      expect(proc_arr(['1','2','3','0','5','1','1','3'])).to eq  [3360, 1112335, 53321110]
     end
   end
 
