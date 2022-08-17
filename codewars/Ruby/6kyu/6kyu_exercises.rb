@@ -98,10 +98,24 @@ def duplicate_count(text)
   # ('a'..'z').count { |c| text.downcase.count(c) > 1 }
 end
 
-# Generating Numbers From Digits #1
-def proc_arr(arr)
-  p (1..arr.uniq.length).to_a.reverse.reduce(:*)
-  comb = (1...arr.length).reduce(:*)
+# 17aug
+# Your order, please
+def order(words)
+  words.split.sort_by{|w| w[/\d/]}.join(' ')
+end
 
-  comb
+
+# Convert string to camel case
+def to_camel_case(str)
+  str.split(/-|_/).map.with_index{|s, i|  i == 0 ? s : s.capitalize }.join
+end
+
+
+# Find the missed number
+def getLengthOfMissingArray(array_of_arrays)
+  return 0   if array_of_arrays.nil? || array_of_arrays.empty?
+  nums = array_of_arrays.reduce([]){|final, arr | final << arr.length}
+  firstNum = nums.sort.first  === 2 ? 1 : nums.sort.first 
+  res =  (((firstNum..nums.sort.last).to_a)  - (nums.sort))[0]
+  return res ?  res : 0
 end
