@@ -119,3 +119,48 @@ def getLengthOfMissingArray(array_of_arrays)
   res =  (((firstNum..nums.sort.last).to_a)  - (nums.sort))[0]
   return res ?  res : 0
 end
+
+# Estimating Amounts of Subsets
+def est_subsets(arr)
+  arr = arr[0].instance_of?(String) ? (1..arr.uniq.length).to_a : (1..arr.uniq.length).to_a
+  res = -1
+  for i in 0..(arr.length) do
+    res += arr.combination(i).to_a.size
+  end
+  res
+end
+
+
+# Duplicate Encoder
+def duplicate_encode(word)
+  word.downcase.each_char.map{|char| char = word.downcase.count(char) > 1 ? ')' : '('}.join('')
+end
+
+
+# Take a Ten Minutes Walk
+def is_valid_walk(walk)
+  def get_counts (chars, walk)
+    arr = chars.map{|char| walk.count(char)}
+    return arr.uniq.size > 1 ?  false : true
+  end
+  
+  walk.size <= 10 && get_counts(walk.uniq, walk) ? true : false
+end
+
+
+def persistence(n)
+  count =0
+  while n.digits.length > 1 do
+    n = n.digits.inject(&:*)
+    count+=1
+  end
+  count
+end
+
+def alphabet_position(text)
+  alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  text.downcase.strip.chars.map{|character| alphabet.index(character) && alphabet.index(character) +1 }.compact.join(' ')
+end
+
+Expected:    "14 4 7 2 6 13 23 16 16 18 25 5 13 26 12 12 10 21 23 21 3 1 5 9 10 9 9 12 10 2 20 17 4 25 25 26 4 24 5 20 2 2 12 10 9 24 13 21 22 20 11 25 7", 
+instead got: "14 4 7 2 6 13 0 23 16 16 18 25 5 13 26 12 12 10 21 23 21 3 1 5 9 10 9 9 12 10 2 20 17 4 25 25 26 4 24 5 20 2 2 12 10 9 24 13 21 22 20 11 25 7"

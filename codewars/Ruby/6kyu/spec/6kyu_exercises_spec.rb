@@ -50,19 +50,36 @@ RSpec.describe "7 kyu codewars" do
       expect(to_camel_case("A-B-C")).to eq "ABC"
     end
     it "Basic Tests" do
-      # expect(getLengthOfMissingArray([ [ 1, 2 ], [ 4, 5, 1, 1 ], [ 1 ], [ 5, 6, 7, 8, 9 ]] )).to eq  3;
-      #  expect(getLengthOfMissingArray([ [ 5, 2, 9 ], [ 4, 5, 1, 1 ], [ 1, 2 ], [ 5, 6, 7, 8, 9 ]] )).to eq  0;
-       expect(getLengthOfMissingArray([ [ false, false ], [ false, false, false ] ] )).to eq  1;
-      #  expect(getLengthOfMissingArray([ [ 'a', 'a', 'a' ], [ 'a', 'a' ], [ 'a', 'a', 'a', 'a' ], [ 'a' ], [ 'a', 'a', 'a', 'a', 'a', 'a' ]] )).to eq  5;
-      #  expect(getLengthOfMissingArray([ ])).to eq  0
+      expect(getLengthOfMissingArray([ [ 1, 2 ], [ 4, 5, 1, 1 ], [ 1 ], [ 5, 6, 7, 8, 9 ]] )).to eq  3;
+      expect(getLengthOfMissingArray([ [ false, false ], [ false, false, false ] ] )).to eq  1;
+      expect(getLengthOfMissingArray([ [ 'a', 'a', 'a' ], [ 'a', 'a' ], [ 'a', 'a', 'a', 'a' ], [ 'a' ], [ 'a', 'a', 'a', 'a', 'a', 'a' ]] )).to eq  5;
+    end
+    it "Basic Tests" do
+       expect(est_subsets([1, 2, 3, 4])).to eq 15
+      expect(est_subsets([-13, 9, -5, 7, -4, -2, 8])).to eq 127
+    end
+    it "should pass fixed tests" do
+     expect(duplicate_encode("din")).to eq "((("
+     expect(duplicate_encode("recede")).to eq "()()()"
+     expect(duplicate_encode("Success")).to eq ")())())"
+     expect(duplicate_encode("Prespecialized")).to eq ")()())()(()()("
+    end
+    it "should pass fixed tests" do
+      expect(is_valid_walk(['n','s','n','s','n','s','n','s','n','s'])).to eq true
+      expect(is_valid_walk(['w','e','w','e','w','e','w','e','w','e','w','e'])).to eq false
+      expect(is_valid_walk(['n','n','n','s','n','s','n','s','n','s'])).to eq false
+    end
+    it "Basic tests" do
+      expect(persistence(39)).to eq 3
+      expect(persistence(4)).to eq 0
+      expect(persistence(25)).to eq 2
+      expect(persistence(999)).to eq 4
+      expect(persistence(444)).to eq 3
+    end
+    it "should pass fixed tests" do
+      expect(alphabet_position("The sunset sets at twelve o' clock.")).to eq "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
+      expect(alphabet_position("-.-'")).to eq ""
     end
   end
 
-end
-
-RSpec.describe "7 kyu codewars" do
-  it 'testing predicate' do 
-    res = 1+2
-    expect(res.even?).to eq false
-  end
 end
