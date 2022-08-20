@@ -162,5 +162,14 @@ def alphabet_position(text)
   text.downcase.strip.chars.map{|character| alphabet.index(character) && alphabet.index(character) +1 }.compact.join(' ')
 end
 
-Expected:    "14 4 7 2 6 13 23 16 16 18 25 5 13 26 12 12 10 21 23 21 3 1 5 9 10 9 9 12 10 2 20 17 4 25 25 26 4 24 5 20 2 2 12 10 9 24 13 21 22 20 11 25 7", 
-instead got: "14 4 7 2 6 13 0 23 16 16 18 25 5 13 26 12 12 10 21 23 21 3 1 5 9 10 9 9 12 10 2 20 17 4 25 25 26 4 24 5 20 2 2 12 10 9 24 13 21 22 20 11 25 7"
+
+# Number of permutations without repetitions
+def perms(element)
+  (1..element.to_s.split('').uniq.length).to_a.inject(:*)
+end
+
+
+# Arrh, grabscrab!
+def grabscrab anagram, dictionary
+  s.upcase.split(';').map { |arr| arr.split(':').rotate.join(', ')}.sort.join(')(').insert(0, '(')+')'
+end

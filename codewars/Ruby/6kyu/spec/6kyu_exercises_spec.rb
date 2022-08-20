@@ -80,6 +80,16 @@ RSpec.describe "7 kyu codewars" do
       expect(alphabet_position("The sunset sets at twelve o' clock.")).to eq "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
       expect(alphabet_position("-.-'")).to eq ""
     end
+    it "should pass fixed tests" do
+      expect(grabscrab("trisf", ["first"])).to eq ["first"]
+      expect(grabscrab("oob", ["bob", "baobab"])).to eq []
+      expect(grabscrab("ainstuomn", ["mountains", "hills", "mesa"])).to eq ["mountains"]
+      expect(grabscrab("oolp", ["donkey", "pool", "horse", "loop"])).to eq ["pool", "loop"]
+      expect(grabscrab("ortsp", ["sport", "parrot", "ports", "matey"])).to eq ["sport", "ports"]
+      expect(grabscrab("ourf", ["one","two","three"])).to eq []
+    end
+
+    
   end
 
 end
