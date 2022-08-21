@@ -173,3 +173,36 @@ end
 def grabscrab anagram, dictionary
   s.upcase.split(';').map { |arr| arr.split(':').rotate.join(', ')}.sort.join(')(').insert(0, '(')+')'
 end
+
+
+# 21Aug
+# String tops
+def tops(msg)
+  chars = msg.chars
+  res = ''
+  count = 1
+  while chars.length > 0
+    res << chars[count] if chars[count]
+    chars.slice!(0, count)
+    count += 4
+  end
+  res.reverse
+end
+
+
+# Check if two words are isomorphic to each other
+def isomorph(a,b)
+  return false unless a.size == b.size
+  hash = Hash[a.chars.zip b.chars]
+end
+
+def pangram?(string)
+#  string.downcase.delete(" \t\r\n.").chars.uniq.size >= 26
+ ('a'..'z').all? { |x| string.downcase.include? (x) } 
+end
+
+
+# Find the unique number
+def find_uniq(arr)
+  arr.uniq.select{|num| arr.count(num) == 1 }.first
+ end
