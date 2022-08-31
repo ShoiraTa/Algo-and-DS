@@ -22,3 +22,27 @@ end
 def pig_it text
   text.split.map{|word| word.count("a-zA-Z") > 0 ? word.chars.rotate.join + 'ay'  : word.chars.rotate.join}.join(' ')
 end
+
+# Where my anagrams at?
+def anagrams1(word, words)
+  final = []
+  words.each do |anagram|
+    final << anagram if anagram.chars.all? {|char| word.chars.include?(char)}
+  end
+  final
+end
+
+# Where my anagrams at?
+def anagrams(word, words)
+  words.select do |anagram|
+   anagram.chars.sort == word.chars.sort
+  end
+end
+
+# First non-repeating character
+def  first_non_repeating_letter(s) 
+  return '' if s.empty?
+  s.chars.each{|char|  return  char if s.downcase.chars.count(char.downcase) == 1 }
+end
+
+

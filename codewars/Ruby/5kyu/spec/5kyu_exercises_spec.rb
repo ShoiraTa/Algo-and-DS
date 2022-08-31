@@ -14,6 +14,16 @@ RSpec.describe "7 kyu codewars" do
     expect(pig_it('Pig latin is cool')).to eq( 'igPay atinlay siay oolcay')
     expect(pig_it('O tempora o mores !')).to eq( 'Oay emporatay oay oresmay !')
   end
+   it "test" do
+   expect(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada'])).to eq(['aabb', 'bbaa'])
+   expect(anagrams('laser', ['lazing', 'lazy',  'lacer'])).to eq([])
+  end
+
+  it('should handle simple tests') do
+    expect(first_non_repeating_letter('a')).to eq 'a'
+    expect(first_non_repeating_letter('sTress')).to eq 'T'
+    expect(first_non_repeating_letter('moonmen')).to eq 'e'
+  end
    
   end
 end
