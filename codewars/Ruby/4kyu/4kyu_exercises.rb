@@ -46,3 +46,23 @@ def format_duration(seconds)
 
   "#{setTimestamp(:year)}#{lastComponent?(:year)}#{setTimestamp(:day)}#{lastComponent?(:day)}#{setTimestamp(:hour)}#{lastComponent?(:hour)}#{setTimestamp(:minute)}#{lastComponent?(:minute)}#{setTimestamp(:second)}"
 end
+
+
+# Next bigger number with the same digits
+def next_bigger(n)
+  # n.digits.reverse.then do | *rest, pre, last |
+  #   res = [pre, last].reverse 
+  #       .unshift(*rest) 
+  #       .join.to_i
+  #   res if res > n
+  # end
+
+  res = 0
+  head = n.digits.reverse[-1]
+  while res < n
+    res = [head, n.digits.reverse[head+1]].reverse 
+          .unshift(*rest) 
+          .join.to_i
+  end
+  res
+end
