@@ -206,3 +206,8 @@ end
 def find_uniq(arr)
   arr.uniq.select{|num| arr.count(num) == 1 }.first
  end
+
+
+ def find_missing_letter(arr)
+ ((arr[0]... arr[-1]).to_a - arr).first
+end
