@@ -45,4 +45,33 @@ def  first_non_repeating_letter(s)
   s.chars.each{|char|  return  char if s.downcase.chars.count(char.downcase) == 1 }
 end
 
+# Maximum subarray sum
+def max_sequence(arr)
+  return 0 if arr.empty? || arr.all? {|n| n < 0}
+  max = 0
+  current_sum = 0
+  arr.each do |num|
+    current_sum = [num, current_sum + num].max
+    max = [max, current_sum].max
+  end
 
+  max
+end
+
+
+# Zero-plentiful Array
+def zero_plentiful(arr)
+  # your smart code here
+end
+
+
+# The Hashtag Generator
+def generateHashtag(str)
+ str_splitted = str.delete(' ').split('')
+ puts str_splitted
+ unless str_splitted.length >= 140 || str.count("a-zA-Z") < 1 || str.empty?
+  str.split.map{|w| w.capitalize }.unshift('#').join
+ else 
+  false 
+ end
+end
