@@ -68,10 +68,33 @@ end
 # The Hashtag Generator
 def generateHashtag(str)
  str_splitted = str.delete(' ').split('')
- puts str_splitted
  unless str_splitted.length >= 140 || str.count("a-zA-Z") < 1 || str.empty?
   str.split.map{|w| w.capitalize }.unshift('#').join
  else 
   false 
  end
+end
+
+# RGB To Hex Conversion
+def rgb(r, g, b)
+  @hex = ("A".."B").to_a
+  @res = []
+
+  def divide(val)
+    val = val < 0 ? 0 : val
+    n =  "16.#{val}".to_f.round(2)
+    getHexVal((val / n).round)
+    p (val / n).round
+    getHexVal(((val / n) - (val / n).round) * 16)
+  end
+
+  def getHexVal(val )
+    @res << (val >= 10 ?  @hex[val-10] : val )
+  end
+
+  divide(r)
+  # divide(g, hex)
+  # divide(b, hex)
+
+  @res.join 
 end

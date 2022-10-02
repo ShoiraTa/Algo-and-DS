@@ -40,6 +40,13 @@ RSpec.describe "7 kyu codewars" do
   #   expect(zero_plentiful([])).to eq(0)
   # end
   it('should handle simple tests') do
+      # expect(rgb(0, 0, 0)).to eq '000000'
+      # expect(rgb(0, 0, -20)).to eq '000000'
+      expect(rgb(300,255,255)).to eq 'FFFFFF'
+      expect(rgb(173,255,47)).to eq 'ADFF2F'
+  end
+
+  it('should handle simple tests') do
     expect(generateHashtag("")).to eq false
     expect(generateHashtag(" " * 200)).to eq false
     expect(generateHashtag("Do We have A Hashtag")).to eq "#DoWeHaveAHashtag"
@@ -49,11 +56,6 @@ RSpec.describe "7 kyu codewars" do
     expect(generateHashtag("code" + " " * 140 + "wars")).to eq "#CodeWars"
     expect(generateHashtag("a" * 139)).to eq "#A" + "a" * 138
     expect(generateHashtag("a" * 140)).to eq false
-
-    expect(generateHashtag("Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Cat")).to eq false
-
-    # expect(generateHashtag("#HashTagAlready"    )).to eq "#HashTagAlready"
-    # expect(generateHashtag("#" + "a" * (139))).to eq "#Aaaaaa...aaa"
     expect(generateHashtag( "#"                  )).to eq false
     expect(generateHashtag( "     #     "        )).to eq false
     expect(generateHashtag("##"                 )).to eq false
