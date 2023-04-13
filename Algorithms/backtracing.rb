@@ -1,30 +1,40 @@
-require 'pry'
+# Imagine you have to climb a staircase, it has 4 stairs
+# Every time you can make 1,2 or 3 steps at a time, 
+# this algoryths calculates all the possible steps you can take  to reach the climb the stairs
 
-# A simple example of solving a combination lock using backtracking. 
-# The combination lock has three dials, each with digits from 0 to 9, and we need to find the correct combination to unlock it. 
-# We'll use a backtracking algorithm to try every possible combination until we find the correct one.
+#  [1, 1, 1, 1]
+#  [1, 1, 2]
+#  [1, 2, 1]
+#  [1, 3]
+#  [2, 1, 1]
+#  [2, 2]
+#  [3, 1]
 
-def find_arrangements(arr, current_arrangement = [], used = [])
-  print current_arrangement
-  if current_arrangement.length == arr.length
-    puts "Arrangement: #{current_arrangement.join(', ')}"
+# Sum of all these numbers is 4
+
+def climb_stairs(stairs, current_steps = 0, steps_taken = [])
+  # Base case: If we reach the exact number of stairs, print the steps_taken and return
+  if stairs == current_steps
+    puts "found #{steps_taken}"
     return
   end
 
-  arr.each do |number|
-    next if used.include?(number)
+  # Base case: If we go beyond the total number of stairs, return (backtrack)
+  if stairs < current_steps
+    return
+  end
 
-    current_arrangement.push(number)
-    used.push(number)
+  # Iterate through all possible step sizes (1 to 9 in this case)
+  (1..3).to_a.each do |step|
+    # Add the current step size to the steps_taken array
+    steps_taken.push(step)
 
-    find_arrangements(arr, current_arrangement, used)
+    # Recursively call climb_stairs with the new current_steps and updated steps_taken
+    climb_stairs(stairs, current_steps + step, steps_taken)
 
-    current_arrangement.pop
-    used.pop
+    # Backtrack: Remove the last step from steps_taken to explore other possibilities
+    steps_taken.pop
   end
 end
 
-find_arrangements([1, 2, 3])
-
-
-
+climb_stairs(4)
