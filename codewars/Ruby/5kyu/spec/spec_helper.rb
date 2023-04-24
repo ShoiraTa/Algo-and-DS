@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -7,12 +9,11 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-config.shared_context_metadata_behavior = :apply_to_host_groups
+  config.shared_context_metadata_behavior = :apply_to_host_groups
 end
 
 module FormatterOverrides
-  def dump_pending(_)
-  end
+  def dump_pending(_); end
 end
 
 RSpec::Core::Formatters::DocumentationFormatter.prepend FormatterOverrides

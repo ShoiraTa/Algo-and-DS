@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 # Imagine you have to climb a staircase, it has 4 stairs
-# Every time you can make 1,2 or 3 steps at a time, 
+# Every time you can make 1,2 or 3 steps at a time,
 # this algoryths calculates all the possible steps you can take  to reach the climb the stairs
 
 #  [1, 1, 1, 1]
@@ -20,9 +22,7 @@ def climb_stairs(stairs, current_steps = 0, steps_taken = [])
   end
 
   # Base case: If we go beyond the total number of stairs, return (backtrack)
-  if stairs < current_steps
-    return
-  end
+  return if stairs < current_steps
 
   # Iterate through all possible step sizes (1 to 9 in this case)
   (1..3).to_a.each do |step|

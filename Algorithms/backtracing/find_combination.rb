@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 # This example finds combination number
 
-def find_combination(combination, current=[], index=0)
+def find_combination(combination, current = [], index = 0)
   if index == combination.length
     puts "found #{current}"
     return
@@ -10,7 +12,8 @@ def find_combination(combination, current=[], index=0)
   (1..9).to_a.each do |n|
     if n == combination[index]
       current.push(n)
-      return if find_combination(combination, current, index+1)
+      return if find_combination(combination, current, index + 1)
+
       current.pop
     end
     false
@@ -18,4 +21,4 @@ def find_combination(combination, current=[], index=0)
   false
 end
 
-find_combination([1,2,3])
+find_combination([1, 2, 3])

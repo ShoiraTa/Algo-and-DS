@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # Class methods:
 
@@ -25,35 +26,37 @@
 #   unicode_normalized?, unpack, unpack1, upcase, upcase!, upto,
 #   valid_encoding?
 
-#strings //////////////////////////////////////////////////////////////////////
-puts "harry".capitalize()                      #=> "Harry"
-puts "harry".downcase()                        #=> "harry"
-puts "harry".reverse()                         #=> "yrrah"
-puts "harry".include?("a")                     #=> true
-puts "harry".empty?                            #=> false              
-puts "harry".length                            #=> 5
-a ,b, c = "I", "you", "we" 
-"harry".start_with?("a")                       #=> false 
-"harry".start_with?("y")                       #=> true 
-"harry".prepend("potter")                      #=> "potterharry"
-"harry" <<"potter"                             #=> "harrypotter"
-"harry"[0, str.length]                         #=> "harry" (start at index 0 to the end of str)
-"harry"[-1]                                    #=>"y"
-"harry"[1]                                     #=> "a"
-"harry".concat("potter")                       #=> "harrypotter"
-"harry".slice(1)                              #=> "a"
-"harry".slice(1, name.length)                 #=> "arry"
-"harry".slice(1..3)                           #=> a
-"harry"[0] = "pipe"                           #=>pipe
-"harry"[1..3] = "pipe"                        #=>pipe
-"harry".gsub(/[rR]/, "M")                      #=>"haMMy" (replaces all substrings)
-"harry".sub("r", "M")                          #=>"haMry"(replaces first  substrings)
-"harry".delete("h")                           #=>arry
-"Shoira, went, home today".split(",")         #=> ["Shoira", " went", " home today"]
-["I", "went", "home today"].join(" JOIN ")     #=>"I JOIN went JOIN home today"
-"harry".insert(0,"hello ")                    #=> "hello harry"       
+# strings //////////////////////////////////////////////////////////////////////
+puts 'harry'.capitalize                      #=> "Harry"
+puts 'harry'.downcase                        #=> "harry"
+puts 'harry'.reverse                         #=> "yrrah"
+puts 'harry'.include?('a')                     #=> true
+puts 'harry'.empty?                            #=> false
+puts 'harry'.length                            #=> 5
+a = 'I'
+b = 'you'
+c = 'we'
+'harry'.start_with?('a')                       #=> false
+'harry'.start_with?('y')                       #=> true
+'harry'.prepend('potter')                      #=> "potterharry"
+'harry' << 'potter' #=> "harrypotter"
+'harry'[0, str.length]                         #=> "harry" (start at index 0 to the end of str)
+'harry'[-1]                                    #=>"y"
+'harry'[1]                                     #=> "a"
+'harry'.concat('potter')                       #=> "harrypotter"
+'harry'.slice(1)                              #=> "a"
+'harry'.slice(1, name.length)                 #=> "arry"
+'harry'.slice(1..3)                           #=> a
+'harry'[0] = 'pipe'                           #=>pipe
+'harry'[1..3] = 'pipe'                        #=>pipe
+'harry'.gsub(/[rR]/, 'M')                      #=>"haMMy" (replaces all substrings)
+'harry'.sub('r', 'M')                          #=>"haMry"(replaces first  substrings)
+'harry'.delete('h')                           #=>arry
+'Shoira, went, home today'.split(',')         #=> ["Shoira", " went", " home today"]
+['I', 'went', 'home today'].join(' JOIN ') #=>"I JOIN went JOIN home today"
+'harry'.insert(0, 'hello ') #=> "hello harry"
 
-#INPUT OUTPUT////////////////////////////////////////////////////////
-print "What is your name?"
-name= gets.chomp
-puts ("your name is"+name) 
+# INPUT OUTPUT////////////////////////////////////////////////////////
+print 'What is your name?'
+name = gets.chomp
+puts("your name is#{name}")

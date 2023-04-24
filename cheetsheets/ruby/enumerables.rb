@@ -1,70 +1,61 @@
-#https://ruby-doc.org/core-3.0.0/Enumerable.html
+# frozen_string_literal: true
 
+# https://ruby-doc.org/core-3.0.0/Enumerable.html
 
-=begin
-all?(pattern) → true or false
-all? [{ |obj| block } ] → true or false
+# all?(pattern) → true or false
+# all? [{ |obj| block } ] → true or false
+#
+# %w[ant bear cat].all? { |word| word.length >= 3 }       #=> true
+# %w[ant bear cat].all? { |word| word.length >= 4 }        #=> false
+# %w[ant bear cat].all?(/t/)                              #=> false
+# [1, 2i, 3.14].all?(Numeric)                             #=> true
+# [nil, true, 99].all?                                    #=> false
+# [].all?                                                 #=> true
 
-%w[ant bear cat].all? { |word| word.length >= 3 }       #=> true
-%w[ant bear cat].all? { |word| word.length >= 4 }        #=> false
-%w[ant bear cat].all?(/t/)                              #=> false
-[1, 2i, 3.14].all?(Numeric)                             #=> true
-[nil, true, 99].all?                                    #=> false
-[].all?                                                 #=> true
-=end
+# any? [{ |obj| block }] → true or false
+# any?(pattern) → true or false
+#
+# %w[ant bear cat].any? { |word| word.length >= 3 }        #=> true
+# %w[ant bear cat].any? { |word| word.length >= 4 }        #=> true
+# %w[ant bear cat].any?(/d/)                               #=> false
+# [nil, true, 99].any?(Integer)                            #=> true
+# [nil, true, 99].any?                                     #=> true
+# [].any?                                                  #=> false
 
-=begin
-any? [{ |obj| block }] → true or false
-any?(pattern) → true or false
+#
+# chain(*enums) → enumerator
+# e = (1..3).chain([4, 5])
+# e.to_a #=> [1, 2, 3, 4, 5]
+#
 
-%w[ant bear cat].any? { |word| word.length >= 3 }        #=> true
-%w[ant bear cat].any? { |word| word.length >= 4 }        #=> true
-%w[ant bear cat].any?(/d/)                               #=> false
-[nil, true, 99].any?(Integer)                            #=> true
-[nil, true, 99].any?                                     #=> true
-[].any?                                                  #=> false
-=end
-
-
-=begin 
-chain(*enums) → enumerator
-e = (1..3).chain([4, 5])
-e.to_a #=> [1, 2, 3, 4, 5]
-
-=end
-
-=begin 
-chunk { |elt| ... } → an_enumerator
-
-[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5].chunk { |n|
-  n.even?
-}.each { |even, ary|
-  p [even, ary]
-}
-
+#
+# chunk { |elt| ... } → an_enumerator
+#
+# [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5].chunk { |n|
+#   n.even?
+# }.each { |even, ary|
+#   p [even, ary]
+# }
+#
 #=> [false, [3, 1]]
 #   [true, [4]]
 #   [false, [1, 5, 9]]
 #   [true, [2, 6]]
 #   [false, [5, 3, 5]]
-=end
 
-=begin 
-collect { |obj| block } → array
-collect → an_enumerator
+#
+# collect { |obj| block } → array
+# collect → an_enumerator
+#
+# (1..4).map { |i| i*i }                              #=> [1, 4, 9, 16]
+# (1..4).collect { "cat"  }                           #=> ["cat", "cat", "cat", "cat"]
 
-(1..4).map { |i| i*i }                              #=> [1, 4, 9, 16]
-(1..4).collect { "cat"  }                           #=> ["cat", "cat", "cat", "cat"]
-=end
-
-=begin 
-flat_map { |obj| block } → arrayclick to toggle source
-flat_map → an_enumerator
-
-[1, 2, 3, 4].flat_map { |e| [e, -e] }                #=> [1, -1, 2, -2, 3, -3, 4, -4]
-[[1, 2], [3, 4]].flat_map { |e| e + [100] }          #=> [1, 2, 100, 3, 4, 100]
-=end
-
+#
+# flat_map { |obj| block } → arrayclick to toggle source
+# flat_map → an_enumerator
+#
+# [1, 2, 3, 4].flat_map { |e| [e, -e] }                #=> [1, -1, 2, -2, 3, -3, 4, -4]
+# [[1, 2], [3, 4]].flat_map { |e| e + [100] }          #=> [1, 2, 100, 3, 4, 100]
 
 # .select also #filter
 friends = %w[Sharon Leo Leila Brian Arun]
@@ -90,7 +81,7 @@ friends = %w[Sharon Leo Leila Brian Arun]
 friends.map { |friends| friends.gsub(/a/, 'A') }
 #=> "sheep"
 
-# .map! # modifies original array. 
+# .map! # modifies original array.
 salary = [100, 500, 200]
 salary.map! { |a| a - 50 }
 

@@ -25,8 +25,8 @@ end
 end
 
 # Upto and Downto Loops////////////////
-4.upto(8) { |num| print num.to_s }
-8.downto(4) { |num| puts num.to_s }
+4.upto(8) { |num| print num }
+8.downto(4) { |num| puts num }
 
 # Loop loop////////////////////////////
 i = 0
@@ -42,7 +42,7 @@ loop do
   i -= 1
   next if i.odd?
 
-  print i.to_s
+  print i
   break if i.negative?
 end
 
@@ -51,7 +51,7 @@ my_arr = [1, 2, 3, 4, 5]
 
 my_arr.each do |x|
   x += 10
-  puts x.to_s
+  puts x
 end
 
 # Conditional operators
@@ -59,7 +59,7 @@ i = 0
 until i == 6
   i += 1
   if i < 6
-    puts i.to_s
+    puts i
   else
     puts 'end'
   end

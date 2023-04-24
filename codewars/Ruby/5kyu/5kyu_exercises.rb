@@ -1,33 +1,36 @@
+# frozen_string_literal: true
+
 def sum_pairs(ints, s)
   nums = []
-  ints.each.with_index do  |val, i|
+  ints.each.with_index do |val, i|
     ints.delete_at(i)
-    ints.each do |num|  
-
-      nums.push(val, num) if val+num == s 
+    ints.each do |num|
+      nums.push(val, num) if val + num == s
     end
   end
-  nums.empty? ?  nil : nums
+  nums.empty? ? nil : nums
 end
 
 # moveZeros
-def moveZeros(arr) 
+def moveZeros(arr)
   occurance = arr.count(0)
   arr.delete(0)
-  occurance.times{ arr.insert( -1, 0)}
+  occurance.times { arr.insert(-1, 0) }
   arr
 end
 
 # Simple Pig Latin
-def pig_it text
-  text.split.map{|word| word.count("a-zA-Z") > 0 ? word.chars.rotate.join + 'ay'  : word.chars.rotate.join}.join(' ')
+def pig_it(text)
+  text.split.map do |word|
+    word.count('a-zA-Z').positive? ? "#{word.chars.rotate.join}ay" : word.chars.rotate.join
+  end.join(' ')
 end
 
 # Where my anagrams at?
 def anagrams1(word, words)
   final = []
   words.each do |anagram|
-    final << anagram if anagram.chars.all? {|char| word.chars.include?(char)}
+    final << anagram if anagram.chars.all? { |char| word.chars.include?(char) }
   end
   final
 end
@@ -35,19 +38,21 @@ end
 # Where my anagrams at?
 def anagrams(word, words)
   words.select do |anagram|
-   anagram.chars.sort == word.chars.sort
+    anagram.chars.sort == word.chars.sort
   end
 end
 
 # First non-repeating character
-def  first_non_repeating_letter(s) 
+def first_non_repeating_letter(s)
   return '' if s.empty?
-  s.chars.each{|char|  return  char if s.downcase.chars.count(char.downcase) == 1 }
+
+  s.chars.each { |char| return char if s.downcase.chars.count(char.downcase) == 1 }
 end
 
 # Maximum subarray sum
 def max_sequence(arr)
-  return 0 if arr.empty? || arr.all? {|n| n < 0}
+  return 0 if arr.empty? || arr.all?(&:negative?)
+
   max = 0
   current_sum = 0
   arr.each do |num|
@@ -58,43 +63,41 @@ def max_sequence(arr)
   max
 end
 
-
 # Zero-plentiful Array
 def zero_plentiful(arr)
   # your smart code here
 end
 
-
 # The Hashtag Generator
 def generateHashtag(str)
- str_splitted = str.delete(' ').split('')
- unless str_splitted.length >= 140 || str.count("a-zA-Z") < 1 || str.empty?
-  str.split.map{|w| w.capitalize }.unshift('#').join
- else 
-  false 
- end
+  str_splitted = str.delete(' ').split('')
+  if str_splitted.length >= 140 || str.count('a-zA-Z') < 1 || str.empty?
+    false
+  else
+    str.split.map(&:capitalize).unshift('#').join
+  end
 end
 
 # RGB To Hex Conversion
-def rgb(r, g, b)
-  @hex = ("A".."B").to_a
+def rgb(r, _g, _b)
+  @hex = ('A'..'B').to_a
   @res = []
 
   def divide(val)
-    val = val < 0 ? 0 : val
-    n =  "16.#{val}".to_f.round(2)
+    val = val.negative? ? 0 : val
+    n = "16.#{val}".to_f.round(2)
     getHexVal((val / n).round)
     p (val / n).round
     getHexVal(((val / n) - (val / n).round) * 16)
   end
 
-  def getHexVal(val )
-    @res << (val >= 10 ?  @hex[val-10] : val )
+  def getHexVal(val)
+    @res << (val >= 10 ? @hex[val - 10] : val)
   end
 
   divide(r)
   # divide(g, hex)
   # divide(b, hex)
 
-  @res.join 
+  @res.join
 end
