@@ -85,7 +85,7 @@ def duplicate_count(text)
   return false if text.nil?
 
   resHash = Hash.new(0)
-  text.downcase.split('').each { |c| resHash[c] += 1 }
+  text.downcase.chars.each { |c| resHash[c] += 1 }
   resHash.count { |_key, val| val > 1 }
 
   # ('a'..'z').count { |c| text.downcase.count(c) > 1 }
@@ -124,7 +124,7 @@ end
 
 # Duplicate Encoder
 def duplicate_encode(word)
-  word.downcase.each_char.map { |char| char = word.downcase.count(char) > 1 ? ')' : '(' }.join('')
+  word.downcase.each_char.map { |char| char = word.downcase.count(char) > 1 ? ')' : '(' }.join
 end
 
 # Take a Ten Minutes Walk
@@ -149,13 +149,13 @@ end
 def alphabet_position(text)
   alphabet = 'abcdefghijklmnopqrstuvwxyz'
   text.downcase.strip.chars.map do |character|
-    alphabet.index(character) && alphabet.index(character) + 1
+    alphabet.index(character) && (alphabet.index(character) + 1)
   end.compact.join(' ')
 end
 
 # Number of permutations without repetitions
 def perms(element)
-  (1..element.to_s.split('').uniq.length).to_a.inject(:*)
+  (1..element.to_s.chars.uniq.length).to_a.inject(:*)
 end
 
 # Arrh, grabscrab!
@@ -181,7 +181,7 @@ end
 def isomorph(a, b)
   return false unless a.size == b.size
 
-  hash = Hash[a.chars.zip b.chars]
+  hash = (a.chars.zip b.chars).to_h
 end
 
 def pangram?(string)

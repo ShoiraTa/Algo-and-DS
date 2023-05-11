@@ -70,7 +70,7 @@ end
 
 # The Hashtag Generator
 def generateHashtag(str)
-  str_splitted = str.delete(' ').split('')
+  str_splitted = str.delete(' ').chars
   if str_splitted.length >= 140 || str.count('a-zA-Z') < 1 || str.empty?
     false
   else
@@ -84,7 +84,7 @@ def rgb(r, _g, _b)
   @res = []
 
   def divide(val)
-    val = val.negative? ? 0 : val
+    val = 0 if val.negative?
     n = "16.#{val}".to_f.round(2)
     getHexVal((val / n).round)
     p (val / n).round

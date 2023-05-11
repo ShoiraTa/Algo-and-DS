@@ -6,7 +6,6 @@ def find_combination(combination, current = [], index = 0)
   if index == combination.length
     puts "found #{current}"
     return
-
   end
 
   (1..9).to_a.each do |n|

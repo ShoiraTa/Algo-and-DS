@@ -113,6 +113,6 @@ def find_word_lengths(word_list)
   # return a hash with each word as the key and its length as the value
   # hint: use a new hash or an empty hash as the initial accumulator value
   word_list.each_with_object(Hash.new(0)) do |w, hash|
-    hash [w.to_s] = w.length
+    hash[w.to_s] = w.length
   end
 end

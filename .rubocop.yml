@@ -1,0 +1,21 @@
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  Exclude:
+    - 'node_modules/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false 
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

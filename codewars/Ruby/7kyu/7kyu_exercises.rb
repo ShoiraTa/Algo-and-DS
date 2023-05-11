@@ -49,7 +49,7 @@ end
 # String will never be empty and you do not need to account for different data types.
 # Shortest Word
 def find_short(s)
-  s.split(' ').min_by(&:length).length
+  s.split.min_by(&:length).length
 end
 
 # Given an array of numbers (in string format), you must return a string. The numbers correspond to the letters of the alphabet in reverse order: a=26, z=1 etc. You should also account for '!', '?' and ' ' that are represented by '27', '28' and '29' respectively.
@@ -57,7 +57,7 @@ end
 # Numbers to Letters
 def switcher(arr)
   a = ' ?!abcdefghijklmnopqrstuvwxyz'
-  arr.map { |val| a.reverse[val.to_i - 1] }.join('')
+  arr.map { |val| a.reverse[val.to_i - 1] }.join
 end
 
 # Given a string made up of letters a, b, and/or c, switch the position of letters a and b (change a to b and vice versa). Leave any incidence of c untouched.
@@ -119,7 +119,7 @@ end
 # 12 Aug 2022
 # Highest and Lowest
 def high_and_low(numbers)
-  numbers.split(' ').map(&:to_i).minmax.reverse.join(' ')
+  numbers.split.map(&:to_i).minmax.reverse.join(' ')
 end
 
 # Descending Order
@@ -151,7 +151,7 @@ end
 # An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram.
 # Isograms
 def is_isogram(string)
-  !string.downcase.split('').uniq!
+  !string.downcase.chars.uniq!
 end
 
 # Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
@@ -201,8 +201,8 @@ end
 
 def findNum(arr)
   sorted = arr.sort
-  withNum = (sorted[0]..sorted[-1]).to_a
-  (withNum - sorted)[0]
+  with_num = (sorted[0]..sorted[-1]).to_a
+  (with_num - sorted)[0]
 end
 
 # The Collatz Conjecture states that for any natural number n, if n is even, divide it by 2. If n is odd, multiply it by 3 and add 1. If you repeat the process continuously for n, n will eventually reach 1.
