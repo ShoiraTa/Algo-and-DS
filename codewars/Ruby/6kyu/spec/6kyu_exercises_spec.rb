@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+# require 'spec_helper'
 require_relative '../6kyu_exercises'
 
 RSpec.describe '7 kyu codewars' do
@@ -104,6 +104,14 @@ RSpec.describe '7 kyu codewars' do
       #  expect(pangram?("This is not a pangram.")).to eq(false)
       expect(pangram?('ABCD45EFGH,IJK,LMNOPQR56STUVW3XYZ')).to eq(true)
       #  expect(pangram?("EDIXudDsIUbGqIO QZrSL yCiBkduASJMZrxVbR vAWg KYKPbfTZlLnpSQXyfFbKZOaTcaDjucOqxAUYWRxwUqEcFZruCtn ")).to eq(false)
+    end
+
+    it 'Some examples' do
+      expect(deep_count([])).to eq(0)
+      expect(deep_count([1, 2, 3])).to eq(3)
+      expect(deep_count(['x', 'y', ['z']])).to eq(4)
+      expect(deep_count([1, 2, [3, 4, [5]]])).to eq(7)
+      expect(deep_count([[[[[[[[[]]]]]]]]])).to eq(8)
     end
   end
 end

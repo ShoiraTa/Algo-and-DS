@@ -1,12 +1,12 @@
-# rubocop:disable Layout/IndentationConsistency, Layout/LineLength(RuboCop)
-# prints the given number of combinations from a text 
+# (RuboCop)
+# prints the given number of combinations from a text
 require 'csv'
-text = "abandon ability able about".split(" ")
+text = 'abandon ability able about'.split
 
-def combination_finder(arr, target_combination, used = [], current_combination = [] )
+def combination_finder(arr, target_combination, used = [], current_combination = [])
   if current_combination.length == target_combination
     puts "one combination: #{current_combination}"
-    CSV.open("combinations.csv", "a+") do |csv|
+    CSV.open('combinations.csv', 'a+') do |csv|
       csv << current_combination
     end
     return
@@ -23,4 +23,4 @@ def combination_finder(arr, target_combination, used = [], current_combination =
   end
 end
 
-combination_finder(text, 2 )
+combination_finder(text, 2)

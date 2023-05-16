@@ -1,3 +1,5 @@
+require 'pry'
+
 # frozen_string_literal: true
 
 # Completethesolutionsothat it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
@@ -196,4 +198,14 @@ end
 
 def find_missing_letter(arr)
   ((arr[0]...arr[-1]).to_a - arr).first
+end
+
+def deep_count(a)
+  return 0 if a.empty?
+
+  count = a.count
+  a.select { |val| val.is_a?(Array) }.each do |val|
+    count += deep_count(val)
+  end
+  count
 end
