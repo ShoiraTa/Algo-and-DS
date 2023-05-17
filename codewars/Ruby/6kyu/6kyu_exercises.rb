@@ -209,3 +209,15 @@ def deep_count(a)
   end
   count
 end
+
+def reduce(fraction)
+  a, b = fraction
+  a = gcd(a, b)
+  [(fraction[0] / a), (fraction[1] / a)]
+end
+
+def gcd(a, b)
+  return a if b.zero?
+
+  gcd(b, a % b)
+end

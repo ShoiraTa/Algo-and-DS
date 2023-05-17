@@ -113,5 +113,14 @@ RSpec.describe '7 kyu codewars' do
       expect(deep_count([1, 2, [3, 4, [5]]])).to eq(7)
       expect(deep_count([[[[[[[[[]]]]]]]]])).to eq(8)
     end
+
+    it 'Simple Fractions' do
+      expect(reduce([60, 20])).to eq( [3, 1])
+      expect(reduce([80, 120])).to eq( [2, 3])
+      expect(reduce([4, 2])).to eq( [2, 1])
+      expect(reduce([45, 120])).to eq( [3, 8])
+      expect(reduce([1000, 1])).to eq( [1000,1])
+      expect(reduce([1, 1])).to eq( [1, 1])
+    end
   end
 end
