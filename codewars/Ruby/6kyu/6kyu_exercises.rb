@@ -223,25 +223,28 @@ def gcd(a, b)
 end
 
 def reverser(number, reversed_number = 0)
-  if number < 10
-    return (reversed_number * 10) + number
-  else
-    last_digit = number % 10
-    remaining_digits = number / 10
-    reversed_number = (reversed_number * 10) + last_digit
-    return reverser(remaining_digits, reversed_number)
+  return (reversed_number * 10) + number if number < 10
+
+  last_digit = number % 10
+  remaining_digits = number / 10
+  reversed_number = (reversed_number * 10) + last_digit
+  reverser(remaining_digits, reversed_number)
+end
+
+def beggars(values, n, arr = [])
+  return arr if n.zero?
+
+  indexes_to_del = []
+  sum = 0
+  values.each_with_index do |element, index|
+    if (index % n).zero?
+      sum += element
+      indexes_to_del.unshift(index)
+    end
   end
+  indexes_to_del.each { |index| values.delete_at(index) }
+
+  arr.push(sum)
+
+  beggars(values, n - 1, arr)
 end
-
-
-def beggars(values, n)
-  return 0 if n == 0
-  arr = []
-  arr.push(values.each_with_index.reduce() do |sum, (element, index)|
-     sum += element if index%2==0 
-  end)
-
-  arr.push(beggars(values,  n-1))
-end
-
-# beggars([1,2,3,4,5],2) => 9 , 6

@@ -115,12 +115,12 @@ RSpec.describe '7 kyu codewars' do
     end
 
     it 'Simple Fractions' do
-      expect(reduce([60, 20])).to eq( [3, 1])
-      expect(reduce([80, 120])).to eq( [2, 3])
-      expect(reduce([4, 2])).to eq( [2, 1])
-      expect(reduce([45, 120])).to eq( [3, 8])
-      expect(reduce([1000, 1])).to eq( [1000,1])
-      expect(reduce([1, 1])).to eq( [1, 1])
+      expect(reduce([60, 20])).to eq([3, 1])
+      expect(reduce([80, 120])).to eq([2, 3])
+      expect(reduce([4, 2])).to eq([2, 1])
+      expect(reduce([45, 120])).to eq([3, 8])
+      expect(reduce([1000, 1])).to eq([1000, 1])
+      expect(reduce([1, 1])).to eq([1, 1])
     end
 
     it 'Simple reverser' do
@@ -128,11 +128,15 @@ RSpec.describe '7 kyu codewars' do
       # expect(reverser(4321)).to eq( 1234)
     end
     it 'Simple reverser' do
-     expect(beggars([1,2,3,4,5],1)).to eq([15])
-    #  expect(beggars([1,2,3,4,5],2)).to eq([9,6])
-    #  expect(beggars([1,2,3,4,5],3)).to eq([5,7,3])
-    #  expect(beggars([1,2,3,4,5],6)).to eq([1,2,3,4,5,0])
-    #  expect(beggars([1,2,3,4,5],0)).to eq([])
+      expect(beggars([1, 2, 3, 4, 5], 1)).to eq([15])
+      expect(beggars([1, 2, 3, 4, 5], 2)).to eq([9, 6])
+      expect(beggars([1, 2, 3, 4, 5], 3)).to eq([5, 7, 3])
+      expect(beggars([1, 2, 3, 4, 5], 6)).to eq([1, 2, 3, 4, 5, 0])
+      expect(beggars([1, 2, 3, 4, 5], 0)).to eq([])
     end
   end
 end
+
+# beggars([1,2,3,4,5],3)
+# 1+4 [2,3,5]
+# 2 [2,3,5]
