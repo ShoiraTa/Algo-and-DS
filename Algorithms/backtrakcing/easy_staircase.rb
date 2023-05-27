@@ -38,3 +38,4 @@ def climb_stairs(stairs, current_steps = 0, steps_taken = [])
 end
 
 climb_stairs(4)
+

@@ -19,5 +19,11 @@ RSpec.describe '7 kyu codewars' do
       expect(next_bigger(414)).to eq 441
       expect(next_bigger(144)).to eq 414
     end
+    it 'sum_pairs' do
+      expect(combos(1)).to eq [[1]]
+      expect(combos(2).sort).to eq [[1,1],[2]]
+      expect(combos(3).sort).to eq [[1,1,1],[1,2],[3]]
+      expect(combos(4).sort).to eq [[1,1,1,1],[1,1,2],[1,3],[2,2],[4]]
+    end
   end
 end

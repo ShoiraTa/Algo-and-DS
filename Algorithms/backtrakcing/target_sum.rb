@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def target_sum(nums_arr, target, current = [], index = 0)
-  print current
+  puts current
   if current.length == 2
     if current.sum == target
       puts "Pair found: #{current}"
@@ -20,4 +20,4 @@ def target_sum(nums_arr, target, current = [], index = 0)
   target_sum(nums_arr, target, current, index + 1) unless found
 end
 
-target_sum([1, 3, 5, 7, 9], 12)
+p target_sum([1, 3, 5, 7, 9], 12)
