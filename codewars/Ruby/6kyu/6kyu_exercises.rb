@@ -249,7 +249,6 @@ def beggars(values, n, arr = [])
   beggars(values, n - 1, arr)
 end
 
-
 # High score table
 class HighScoreTable
   def initialize(limit)
@@ -264,8 +263,7 @@ class HighScoreTable
 
   def update(score)
     @scores.push(score)
-    @scores = @scores.sort {|x,y| y<=>x}
+    @scores = @scores.sort { |x, y| y <=> x }
     @scores.pop if @scores.length > @limit
   end
 end
-
