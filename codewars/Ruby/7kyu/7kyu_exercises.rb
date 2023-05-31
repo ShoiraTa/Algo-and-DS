@@ -244,3 +244,23 @@ def max_product(numbers, size)
   # numbers.sort.reverse.first(size).reduce(:*)
   numbers.max(size).reduce(:*)
 end
+
+# Flatten and sort an array
+def flatten_and_sort(array)
+  array.flatten!
+  return array if array.length <= 1
+
+  loop do
+    swapped = false
+    0.upto(array.length - 2) do |i|
+      if array[i] > array[i + 1]
+        array[i], array[i + 1] = array[i + 1], array[i]
+        swapped = true
+      end
+    end
+    break unless swapped
+  end
+  array
+end
+
+p flatten_and_sort([[]])

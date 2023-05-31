@@ -267,3 +267,17 @@ class HighScoreTable
     @scores.pop if @scores.length > @limit
   end
 end
+
+def spacey(array, new_array = [])
+  return 0 if array.empty?
+
+  new_array.push(array.first)
+  new_array[-1] = [new_array[-1], (new_array[-2])].reverse.join if new_array[-2]
+
+  spacey(array.drop(1), new_array)
+  new_array
+end
+
+p spacey(%w[kevin has no space])
+
+# [ 'kevin', 'kevinhas', 'kevinhasno', 'kevinhasnospace']

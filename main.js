@@ -1,0 +1,1 @@
+import './codewars/JS/8kyu.js'
