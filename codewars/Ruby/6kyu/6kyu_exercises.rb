@@ -278,6 +278,19 @@ def spacey(array, new_array = [])
   new_array
 end
 
-p spacey(%w[kevin has no space])
+def solve(arr)
+  arr_hash = {}
 
-# [ 'kevin', 'kevinhas', 'kevinhasno', 'kevinhasnospace']
+  arr.each do |el|
+    arr_hash[el] ||= 0
+    arr_hash[el] += 1
+  end
+  arr_hash= arr_hash.sort_by{|key, value| [-value, key]}.to_h
+  sorted_arr = []
+  arr_hash.each {|key, value| sorted_arr += [key] * value}
+
+  sorted_arr
+end
+
+p solve([2,3,5,3,7,9,5,3,7])
+# [3,3,3,5,5,7,7,2,9]
