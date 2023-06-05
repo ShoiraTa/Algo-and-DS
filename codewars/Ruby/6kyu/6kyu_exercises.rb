@@ -285,12 +285,9 @@ def solve(arr)
     arr_hash[el] ||= 0
     arr_hash[el] += 1
   end
-  arr_hash= arr_hash.sort_by{|key, value| [-value, key]}.to_h
+  arr_hash = arr_hash.sort_by { |key, value| [-value, key] }.to_h
   sorted_arr = []
-  arr_hash.each {|key, value| sorted_arr += [key] * value}
+  arr_hash.each { |key, value| sorted_arr += [key] * value }
 
   sorted_arr
 end
-
-p solve([2,3,5,3,7,9,5,3,7])
-# [3,3,3,5,5,7,7,2,9]
