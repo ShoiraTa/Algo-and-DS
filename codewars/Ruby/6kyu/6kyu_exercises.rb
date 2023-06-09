@@ -291,3 +291,34 @@ def solve(arr)
 
   sorted_arr
 end
+
+def sort_array(source_array)
+  even_h = {}
+  arr = []
+  source_array.each_with_index do |val, i|
+    even_h[i] = val if val.even?
+
+    arr.push(val) if val.odd?
+  end
+
+  0.upto(arr.length - 1) do |i|
+    min_val = i
+    (i + 1).upto(arr.length - 1) do |j|
+      min_val = j if arr[min_val] > arr[j]
+    end
+    arr[min_val], arr[i] = arr[i], arr[min_val] unless min_val == i
+  end
+  even_h.each do |key, val|
+    arr.insert(key, val)
+  end
+  arr
+end
+
+
+
+
+
+
+p sort_array([5, 3, 2, 8, 1, 4, 11])
+
+# [1, 3, 2, 8, 5, 4, 11]
