@@ -316,9 +316,43 @@ end
 
 
 
+def find_dups_miss(arr)
+  sorted_rrr = sort_it(arr)
+
+  missing = nil
+  sorted_rrr.each_with_index do |_val, index|
+    if sorted_rrr[index+1] - sorted_rrr[index] == 2
+      missing =  sorted_rrr[index]+1
+    end
+  end
+  missing
+end
+
+def sort_it(arr)
+  return arr if arr.length <= 1
+  mid = arr.length / 2
+
+  left = sort_it(arr.take(mid))
+  right = sort_it(arr.drop(mid))
+
+  merge(left, right)
+end
+
+def merge(arr1, arr2)
+  final = []
+  while !arr1.empty? && !arr2.empty?
+    if arr1[0] < arr2[0]
+      final.push(arr1.  shift)
+    else
+      final.push(arr2.shift)
+    end
+  end
+  final.concat(arr1).concat(arr2)
+end
 
 
+p sort_it([10,9,8,9,9,11,6,1,2,4,3,2,5,5,3])
+# p find_dups_miss([10,9,8,9,9,11,6,1,2,4,3,2,5,5,3])
+# [7,[2,3,5,9]]
 
-p sort_array([5, 3, 2, 8, 1, 4, 11])
-
-# [1, 3, 2, 8, 5, 4, 11]
+# 10,9,9,6,1,2,4,3,2,5,5,3

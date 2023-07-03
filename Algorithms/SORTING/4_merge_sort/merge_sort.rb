@@ -26,7 +26,7 @@
 # end
 
 def merge_arr(arr1, arr2)
-  arr =[]
+  arr = []
   while !arr1.empty? && !arr2.empty?
     if arr1[0] < arr2[0]
       arr.push(arr1.shift)
