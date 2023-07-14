@@ -122,7 +122,7 @@ def remove_duplicates(nums)
   nums
 end
 
-p remove_duplicates([0,0,1,1,1,2,3,3])
+# p remove_duplicates([0,0,1,1,1,2,3,3])
 
 def is_palindrome(s)
   normalized_s =  s.gsub(/[^a-zA-Z]/, '').downcase
@@ -130,4 +130,48 @@ def is_palindrome(s)
   normalized_s == normalized_s.reverse
 end
 
-p is_palindrome("1a2")
+# p is_palindrome("1a2")
+
+def reverse_vowels(s)
+  vovels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' ]
+  chars = s.chars
+  arr = []
+  chars.each {|char| arr << char if vovels.include?(char)}.reverse
+  chars.each_with_index do |char, i|
+    if vovels.include?(char)
+      chars[i] = arr.pop
+    end
+  end
+  chars.join()
+end
+# p reverse_vowels("aA") # > holle
+
+def is_isomorphic(s, t)
+  s_h = {}
+  t_h = {}
+
+  s.chars.zip(t.chars) do |s_char, t_char|
+    if s_h[s_char]
+      binding.pry
+      return false if s_h[s_char] != t_char
+    else
+      s_h[s_char] = t_char
+    end
+
+    if t_h[t_char]
+      return false if t_h[t_char] != s_char
+    else
+      t_h[t_char] = s_char
+    end
+  end
+  true
+end
+p is_isomorphic('edd', 'afd')
+
+def is_power_of_three(n)
+  return false if n <= 0 
+  while n % 3 == 0
+     n /= 3
+  end
+  n==1
+end
