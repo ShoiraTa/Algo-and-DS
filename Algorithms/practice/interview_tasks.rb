@@ -47,7 +47,14 @@ p "quick_sort: #{quick_sort([1, 12, 13, 15, 3, 4, 5, 7, 8])}"
 def is_valid_parentheses(s)
   mapping = {"}" => "{", "]" => "[", ")" => "("}
   stack = []
-  
+  s.chars.each do |char|
+    if mapping.values.include?(char)
+      stack << char
+    elsif mapping.keys.include?(char) 
+      return false if stack.pop != mapping[char]
+    end
+  end
+  stack.empty?
 end
 p "is_valid_parentheses: #{is_valid_parentheses("()[]{}")}"
 
