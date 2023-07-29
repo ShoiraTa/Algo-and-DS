@@ -24,8 +24,8 @@ def bubble_sort(arr)
   while swapped
     swapped = false
     (0...arr.length - 1).each do |num|
-      if arr[num] > arr[num+1] 
-        arr[num], arr[num+1] = arr[num+1], arr[num]
+      if arr[num] > arr[num + 1]
+        arr[num], arr[num + 1] = arr[num + 1], arr[num]
         swapped = true
       end
     end
@@ -36,9 +36,9 @@ p "bubble_sort: #{bubble_sort([1, 12, 13, 15, 3, 4, 5, 7, 8])}"
 
 # 3. selection sort
 def selection_sort(arr)
-  (0...arr.length-1).each do |n|
-    min = n 
-    (n+1...arr.length).each do |i|
+  (0...arr.length - 1).each do |n|
+    min = n
+    (n + 1...arr.length).each do |i|
       min = i if arr[min] > arr[i]
     end
     arr[n], arr[min] = arr[min], arr[n]
@@ -51,9 +51,10 @@ p "selection_sort: #{selection_sort([1, 12, 13, 15, 3, 4, 5, 7, 8])}"
 def insertion_sort(arr)
   (0...arr.length).each do |i|
     while i.positive?
-      break if arr[i] > arr[i-1]
-      arr[i], arr[i-1] = arr[i-1], arr[i]
-      i-=1
+      break if arr[i] > arr[i - 1]
+
+      arr[i], arr[i - 1] = arr[i - 1], arr[i]
+      i -= 1
     end
   end
   arr
@@ -66,22 +67,23 @@ def merge(arr1, arr2)
   arr = []
 
   while !arr1.empty? && !arr2.empty?
-    if arr1[0] < arr2[0]
-      arr << arr1.shift
-    else
-      arr << arr2.shift
-    end
+    arr << if arr1[0] < arr2[0]
+             arr1.shift
+           else
+             arr2.shift
+           end
   end
   arr.concat(arr1).concat(arr2)
 end
 
 def split(arr)
-  return arr if arr.length <= 1 
+  return arr if arr.length <= 1
+
   mid = arr.length / 2
 
   left = split(arr.slice(0...mid))
   right = split(arr.slice(mid...arr.length))
-  
+
   merge(left, right)
 end
 
@@ -89,10 +91,11 @@ p "split: #{split([1, 12, 13, 15, 3, 4, 5, 7, 8])}"
 
 # 6. quick sort
 def quick_sort(arr)
-  return arr if arr.length <= 1 
+  return arr if arr.length <= 1
+
   pivot = arr.shift
 
-  left, right = arr.partition{|n| n < pivot}
+  left, right = arr.partition { |n| n < pivot }
   quick_sort(left) + [pivot] + quick_sort(right)
 end
 p "quick_sort: #{quick_sort([1, 12, 13, 15, 3, 4, 5, 7, 8])}"
@@ -100,28 +103,31 @@ p "quick_sort: #{quick_sort([1, 12, 13, 15, 3, 4, 5, 7, 8])}"
 # PRACTICE TASKS ---------------------------------------------
 # 1
 def is_valid_parentheses(s)
-  mapping = {"}" => "{", "]" => "[", ")" => "("}
+  mapping = { '}' => '{', ']' => '[', ')' => '(' }
   stack = []
   s.chars.each do |char|
     if mapping.values.include?(char)
       stack << char
-    elsif mapping.keys.include?(char) 
+    elsif mapping.keys.include?(char)
       return false if stack.pop != mapping[char]
     end
   end
   stack.empty?
 end
-p "is_valid_parentheses: #{is_valid_parentheses("()[]{}")}"
+p "is_valid_parentheses: #{is_valid_parentheses('()[]{}')}"
 
 # 2 | 0,1,1,2,3,5,8 | 8=5+3 | 5=2+3 | 3=2+1 |next num is sum of prev 2 nums
 def fibonacci_sequence(n)
-  num1, num2 = 0, 1
+  num1 = 0
+  num2 = 1
   arr = [num1]
   return arr if n == 1
-  (n-2).times do |num|
+
+  (n - 2).times do |_num|
     num3 = num1 + num2
     arr << num3
-    num1, num2 = num2, num3
+    num1 = num2
+    num2 = num3
   end
   arr
 end
@@ -139,23 +145,23 @@ p "find_duplicate_num: #{find_duplicate_num([1, 2, 3, 4, 5, 6, 7, 7, 8, 9, 10])}
 # 4
 def find_missing_num(arr)
   (0...arr.length).each do |num|
-    return arr[num] + 1 if arr[num+1] != arr[num]+1
+    return arr[num] + 1 if arr[num + 1] != arr[num] + 1
   end
 end
 p "find_missing_num: #{find_missing_num([1, 2, 4])}"
 
 # 5
 def is_palindrome(s)
-  sanitized = s.downcase.gsub(/[^a-z0-9]/,'')
+  sanitized = s.downcase.gsub(/[^a-z0-9]/, '')
   sanitized.reverse == sanitized
 end
-p "is_palindrome: #{is_palindrome("aba")}"
+p "is_palindrome: #{is_palindrome('aba')}"
 
 # 6
 def rotate(nums, k)
   nums.prepend(*nums.pop(k))
 end
-p "rotate: #{rotate([1,2,3,4,5], 3)}"
+p "rotate: #{rotate([1, 2, 3, 4, 5], 3)}"
 
 # 7
 def max_profit(prices)
@@ -170,7 +176,7 @@ def max_profit(prices)
   end
   profit
 end
-p "max_profit: #{max_profit([7,1,5,1])}"
+p "max_profit: #{max_profit([7, 1, 5, 1])}"
 
 # 8
 def longest_common_prefix(strs)
@@ -183,7 +189,7 @@ def longest_common_prefix(strs)
   end
   prefix
 end
-p "longest_common_prefix: #{longest_common_prefix(["flower","flow","flight"])}"
+p "longest_common_prefix: #{longest_common_prefix(%w[flower flow flight])}"
 
 # 9
 def first_bad_version_binary_search(n)
@@ -192,56 +198,85 @@ def first_bad_version_binary_search(n)
   while left < right
     mid = (left + right) / 2
     if is_bad(mid)
-      right =  mid
+      right = mid
     else
-      left =  mid-1
+      left = mid - 1
     end
   end
   left
 end
 
-#10
+# 10
 def is_anagram(s, t)
   hash = Hash.new(0)
-  s.chars.each {|char| hash[char] += 1}
-  t.chars.each {|char| hash[char] -= 1}
-  hash.each_value.all?{|val| val == 0}
+  s.chars.each { |char| hash[char] += 1 }
+  t.chars.each { |char| hash[char] -= 1 }
+  hash.each_value.all?(&:zero?)
 end
-p "is_anagram: #{is_anagram("abab", "baba")}"
+p "is_anagram: #{is_anagram('abab', 'baba')}"
 
-#11
+# 11
 def is_subsequence_two_pointer(s, t)
- s_p = 0
- t_p = 0
- while s_p< s.length && t_p < t.length
-  if s[s_p] == t[t_p]
-    s_p+=1
+  s_p = 0
+  t_p = 0
+  while s_p < s.length && t_p < t.length
+    s_p += 1 if s[s_p] == t[t_p]
+    t_p += 1
   end
-  t_p+=1
- end
- s_p == s.length
+  s_p == s.length
 end
-p "is_subsequence_two_pointer: #{is_subsequence_two_pointer("abc", "ahbgdc")}"
+p "is_subsequence_two_pointer: #{is_subsequence_two_pointer('abc', 'ahbgdc')}"
 
 # 12
 def factorial(n)
-  (1..n).inject(1){|acc, num| acc*=num}
+  (1..n).inject(1) { |acc, num| acc *= num }
 end
-p "factorial: #{factorial(5) }" #=> 5 = 5 * 4 * 3 * 2 * 1 = 120}
+p "factorial: #{factorial(5)}" #=> 5 = 5 * 4 * 3 * 2 * 1 = 120}
 
 # 13
 # You are climbing a staircase. It takes n steps to reach the top.
 # Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 def climb_stairs(n)
   return n if n <= 2
+
   first = 1
   second = 2
-  for n in (3..n)
+  (3..n).each do |_n|
     third = first + second
     first = second
     second = third
   end
-  return second
+  second
 end
 
 climb_stairs(5) # 8
+
+# 14 Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+def single_number(nums)
+  hash = Hash.new(0)
+  nums.each { |n| hash[n] += 1 }
+  hash.key(1)
+end
+
+p single_number([3, 1, 2, 1, 2])
+
+# 14 https://leetcode.com/problems/happy-number/
+def is_happy(n)
+  seen = {}
+  until n == 1 || seen[n]
+    seen[n] = true
+    n = n.digits.map { |num| num**2 }.sum
+  end
+  n == 1
+end
+
+p is_happy(19)
+
+# 15 https://leetcode.com/problems/add-digits
+def add_digits(num)
+  return num if num <= 9
+
+  (num % 9).zero? ? 9 : num % 9
+end
+
+p add_digits(38) # 2
