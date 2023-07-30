@@ -280,3 +280,40 @@ def add_digits(num)
 end
 
 p add_digits(38) # 2
+# https://leetcode.com/problems/largest-number-at-least-twice-of-others/
+def dominant_index(nums)
+  sorted = nums.sort
+  max = sorted.pop()
+  return nums.index(max) if sorted.all? { |n| n * 2 <= max }
+  -1
+end
+
+p dominant_index([3,6,1,0])
+
+def get_concatenation(nums)
+  nums.push(*nums)
+end
+p get_concatenation([1,2,1])
+
+def shuffle(nums, n)
+  right = nums.pop(n)
+  arr = []
+  until nums.empty? || right.empty?
+    arr<< nums.shift
+    arr<< right.shift
+  end
+  arr
+end
+p shuffle([2,5,1,3,4,7], 3)
+
+def final_value_after_operations(operations)
+  x = 0
+  for o in operations
+      x += 1 if o.include?("+")
+      x -= 1 if o.include?("-")
+  end
+  x
+  operations.count("+") - operations.count('-')
+end
+
+p final_value_after_operations( ["--X","X++","X++"])

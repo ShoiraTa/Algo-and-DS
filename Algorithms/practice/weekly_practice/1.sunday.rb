@@ -1,12 +1,14 @@
 require 'pry'
 
 # 1
-def factorial(n); end
+def factorial(n)
+  (1...n+1).inject{|acc, n| acc*=n}
+end
 p "factorial: #{factorial(5)}" #=> 5 = 5 * 4 * 3 * 2 * 1 = 120}
 
-# 2 https://leetcode.com/problems/power-of-three/
+# 2
 def is_power_of_three(n)
-
+  
 end
 p "is_power_of_three: #{is_power_of_three(27)}" # 27 = 33
 
