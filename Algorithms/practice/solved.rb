@@ -317,3 +317,54 @@ def final_value_after_operations(operations)
 end
 
 p final_value_after_operations( ["--X","X++","X++"])
+
+# https://leetcode.com/problems/defanging-an-ip-address/
+def defang_i_paddr(address)
+  address.gsub(/./, "[.]")
+end
+p defang_i_paddr("1.1.1.1")
+
+# https://leetcode.com/problems/jewels-and-stones/
+def num_jewels_in_stones(jewels, stones)
+  jewels.chars.inject(0){|sum, j| sum += stones.count(j)}
+
+end
+p num_jewels_in_stones("aA", "aAAbbbb")
+def interpret(command)
+  command.gsub(/\(\)/, "o").gsub(/\(al\)/, "al")
+end
+p interpret("G()()()()(al)")
+
+# @param {Integer} num
+# @return {Integer}
+def minimum_sum(num)
+  digits = num.to_s.chars.sort
+
+  new1 = ""
+  new2 = ""
+
+  digits.each_with_index do |digit, index|
+    if index.even?
+      new1 << digit
+    else
+      new2 << digit
+    end
+  end
+
+  new1.to_i + new2.to_i
+end
+p minimum_sum(2932)
+
+def sort_sentence(s)
+  s = s.split(" ")
+  (0...s.length-1).each do |n|
+    min = n
+    (n+1...s.length).each do |j|
+      # binding.pry
+      min  = j if s[min][-1].to_i > s[j][-1].to_i
+    end
+    s[n], s[min] = s[min], s[n] if min != n
+  end
+  s.join(" ").gsub(/[1-9]/,"")
+  end
+p sort_sentence("is2 sentence4 This1 a3")
