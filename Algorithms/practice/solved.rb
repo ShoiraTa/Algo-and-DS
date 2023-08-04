@@ -368,3 +368,28 @@ def sort_sentence(s)
   s.join(" ").gsub(/[1-9]/,"")
   end
 p sort_sentence("is2 sentence4 This1 a3")
+
+def balanced_string_split(s)
+  balanced_str = 0
+  count = 0
+  s.chars.each do |char|
+    if char == "L"
+      count +=1
+    else
+      count -=1
+    end
+    if count.zero?
+      balanced_str+=1
+    end
+  end
+  balanced_str
+end
+
+p balanced_string_split("RLRRLLRLRL")
+
+def running_sum(nums)
+  sum = 0
+  nums.map{| n| sum+=n}
+end
+
+p running_sum([1,2,3,4])
